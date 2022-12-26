@@ -1,0 +1,760 @@
+---
+title: "Evidence for tradeoffs between photosynthetic and phagotrophic investments in the mixotrophic chrysophyte Ochromonas"
+author: "Barbaglia et al"
+date: "25 December 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Code setup
+
+## Loading packages
+Loads packages relevant to the script
+```{r}
+# LOAD PACKAGES
+require(Rmisc) # Has summarySE function
+require(sciplot) # Has bargraph.CI function
+require(dismo) # For plotting convex hulls
+require(rworldmap) # For plotting map of locations
+require(ape) # package for phylogenetic trees and Mantel test
+
+```
+
+
+
+## Importing data
+Imports data and performs some cleanup
+
+```{r}
+# LOAD DATA
+# NOTE: You will need to change the file path to wherever this spreadsheet is located. See instructions for a PC here: https://www.wikihow.com/Find-a-File%27s-Path-on-Windows
+
+## PHYSIOLOGY
+PAdata <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/GinaBarbaglia/OchTradeoffData.csv")
+#### PAdata <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/GinaBarbaglia/PAdata_old.csv")
+
+
+# Subset the data to exclude strain 2616 & light levels > 200
+PAdata <- PAdata[PAdata$Strain!=2616 & PAdata$Light < 200 ,]
+
+
+## GENETIC DISTANCE
+gendist <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/GinaBarbaglia/NumberOfDifferentBases.csv")
+
+
+## STRAIN GEOGRAPHIC ORIGINS
+metadata <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/RyanMarczak/Ochromonas_TradeoffFunctions - CultureOrigins.csv")
+metadata <- metadata[metadata$Strain!=2616,]
+
+## BACTERIAL ABUNDANCE
+bact.counts <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/GinaBarbaglia/Ochromonas_TradeoffFunctions - PhotoAccBacterialCounts.csv")
+
+
+## CN data
+CNdata <- read.csv("/Users/hollyvm/GoogleSync/StudentWork/GinaBarbaglia/Ochromonas_TradeoffFunctions - Gina_CN.csv",header=T)
+
+```
+
+
+```{r}
+
+#### Delete this whole chunk?
+
+# PHOTOSYNTHESIS CALCULATIONS
+
+Cfix.mult <- 0.01728178 # The multiplier 0.01728178 converts from electrons per chlorophyll molecule per second into pg C per pg chlorophyll-a per hour
+
+PAdata$P_I.perC <- PAdata$chl.to.C*PAdata$P_I*Cfix.mult*12 # multiply by 12 because 12hrs light in each day 
+PAdata$P_I.percell <- PAdata$chl.percell*PAdata$P_I*Cfix.mult*12 # multiply by 12 because 12hrs light in each day
+
+# Manually set photosynthetic rates to 0 if no light.
+for(i in 1:dim(PAdata)[1]){
+  if(PAdata$Light[i]==0){
+    PAdata$P_I[i] <- 0
+    PAdata$P_I.perC[i] <- 0
+    PAdata$P_I.percell[i] <- 0
+    #### PAdata$P_I.cell[i] <- 0
+  }
+}
+
+```
+
+
+
+```{r}
+# GRAZING CALCULATIONS
+
+
+
+
+```
+
+
+# Setting plotting instructions and properties
+
+```{r}
+
+# Rainbow of colours for the eight strains
+# Colours from: https://github.com/BlakeRMills/MetBrewer - Hokusai 1 + a bit of Hokusai 2
+col.a <- rgb(96/255,26/255,16/255)
+col.b <- rgb(183/255,51/255,48/255)
+col.c <- rgb(234/255,95/255,75/255)
+col.d <- rgb(233/255,120/255,47/255)
+col.e <- rgb(243/255,186/255,81/255)
+col.f <- rgb(120/255,171/255,125/255)
+col.g <- rgb(0/255,93/255,148/255)
+col.h <- rgb(0/255,56/255,98/255)
+
+# Rainbow of colours with reduced opacity for backgrounds of plots
+alpha.bg <- .5
+col.a.bg <- rgb(96/255,26/255,16/255,alpha.bg)
+col.b.bg <- rgb(183/255,51/255,48/255,alpha.bg)
+col.c.bg <- rgb(234/255,95/255,75/255,alpha.bg)
+col.d.bg <- rgb(233/255,120/255,47/255,alpha.bg)
+col.e.bg <- rgb(243/255,186/255,81/255,alpha.bg)
+col.f.bg <- rgb(120/255,171/255,125/255,alpha.bg)
+col.g.bg <- rgb(0/255,93/255,148/255,alpha.bg)
+col.h.bg <- rgb(0/255,56/255,98/255,alpha.bg)
+
+# Assembling into a vector of colors
+col.strains <- c(col.a,col.b,col.c,col.d,col.e,col.f,col.g,col.h)
+col.strains.bg <- c(col.a.bg,col.b.bg,col.c.bg,col.d.bg,col.e.bg,col.f.bg,col.g.bg,col.h.bg)
+
+# "Mega" vector alternates saturated and unsaturated, for making barplots that show high and low bacterial treatments side by side
+mega.col.strains <- rep(NaN,length(col.strains)*2)
+for(i in 1:length(col.strains)){
+  mega.col.strains[2*(i-1)+1] <- col.strains[i]
+  mega.col.strains[2*i] <- col.strains.bg[i]
+}
+
+# Settings for symbol type and expansion factor of low (.X) and high (.R) bacterial treatments
+pch.X <- 24
+pch.R <- 21
+ptcex.X <- .8
+ptcex.R <- 1
+
+
+```
+
+
+# Growth rates
+
+Ochromonas growth rates increase with light and prey.
+
+We have ordered this plot from left to right in terms of the strains that showed the biggest change in growth with the addition of bacteria. This chunk of code computes that.
+
+```{r}
+# Figuring out strain ordering
+
+# Make a dataframe summarizing the growth rate data
+growth.summ <- summarySE(data=PAdata,'Growth.Rate',groupvars=c('Strain','Light','Bact.short'),na.rm=T)
+
+# Compute the difference in growth rates between high and low bacterial treatments
+growth.summ.x <- growth.summ[growth.summ$Bact.short=='X',]
+growth.summ.r <- growth.summ[growth.summ$Bact.short=='R',]
+growth.summ.x$growth.r <- growth.summ.r$Growth.Rate
+growth.summ.x$delta.growth <- growth.summ.x$growth.r-growth.summ.x$Growth.Rate
+
+# Make an additional summary across all light levels for each strain
+uber.summ <- summarySE(data=growth.summ.x,'delta.growth',groupvars='Strain',na.rm=T)
+
+# Sort the strains by the magnitude of this difference
+uber.summ <- uber.summ[order(uber.summ$delta.growth,decreasing=T),]
+strains <- uber.summ$Strain # the order command above enforces the order.
+
+# Create a "Strain2" data column in PAdata that contains the strains as ordered; We'll use this later to make barplots in the same order.
+PAdata$Strain2 <- factor(PAdata$Strain,levels=strains) 
+```
+
+
+This code creates a "rainbow plot function", which we'll use throughout the script
+
+```{r}
+
+rainbowplot <- function(dataset,yvar,ylabel,xlabel,spacer,strains,linelevel,legendlocn,logchoice,ylimits,xlab.cex,toplabomit,xtickomit){
+  
+  # 1. Make the main plot
+  if(missing(ylimits)){ # if no y-limits are imposed
+  if(logchoice == 'y'){
+    plot(dataset$Light,dataset[,colnames(dataset)==yvar],las=1,xlab='',ylab=ylabel, type = 'n',xlim=c(0,(150+spacer)*length(strains)-spacer),xaxt='n',log='y', ylim=c(min(dataset[,colnames(dataset)==yvar],na.rm=T),max(dataset[,colnames(dataset)==yvar],na.rm=T)))
+  } else {
+    plot(dataset$Light,dataset[,colnames(dataset)==yvar],las=1,xlab='',ylab=ylabel, type = 'n',xlim=c(0,(150+spacer)*length(strains)-spacer),xaxt='n') }
+  } else { # if y-limits are imposed
+  if(logchoice == 'y'){
+    plot(dataset$Light,dataset[,colnames(dataset)==yvar],las=1,xlab='',ylab=ylabel, type = 'n',xlim=c(0,(150+spacer)*length(strains)-spacer),xaxt='n',log='y', ylim=ylimits)
+  } else {
+    plot(dataset$Light,dataset[,colnames(dataset)==yvar],las=1,xlab='',ylab=ylabel, type = 'n',xlim=c(0,(150+spacer)*length(strains)-spacer),xaxt='n',ylim=ylimits) }
+    
+  }
+  
+  # 2. Add an x-axis on the top (side 3) that indicates strain
+  if(missing(toplabomit)){
+  axis(side = 3, at = c(0:7)*(150+spacer)+75, labels=strains, lwd.ticks=0,line=-1,tck=0,lwd=0)
+  }
+  
+  # 3. Label the x-axis
+  if(missing(xlab.cex)){
+  mtext(xlabel,side=1,line=1.5) # add x-axis label
+  } else{
+    mtext(xlabel,side=1,line=1.5,cex=xlab.cex)
+  }
+
+  # 4. Use a for loop to add a tick along the bottom for each strain
+  for(i in 1:length(strains)){
+    axis(side = 1, at = (i-1)*(150+spacer)+sort(unique(dataset$Light)),tck=.02,labels=F) # Add x-axis tick marks along the top that indicate light level
+    if(missing(xtickomit)){
+    axis(side=1, at = (i-1)*(150+spacer), tick=0, labels='0',line=-.75,cex.axis=1)
+    axis(side=1, at = (i-1)*(150+spacer)+150, tick=0, labels='150',line=-.75,cex.axis=1)
+  }}
+  
+  # 5. Add a horizontal dashed line to mark 0 growth
+  abline(h=linelevel, lty=2)  
+  
+  # 6. Create a data summary
+  dat.summ <- summarySE(data = dataset, measurevar = yvar, groupvars = c('Strain','Bact.short','Light'),na.rm=T)
+  colnames(dat.summ)[5] <- 'YVar'
+  
+  # 7. Plot the data for each strain
+for(i in 1:length(strains)){
+  # 7.1. Subset the data
+  subdat <- dataset[dataset$Strain==strains[i],]
+  sub.dat.summ <- dat.summ[dat.summ$Strain==strains[i],]
+  
+  xcoord.adjust <- (i-1)*(150+spacer) # adjust x-coordinate to space out results
+  
+  # 7.2. Plot error bars for each light level
+  arrows(sub.dat.summ$Light + xcoord.adjust, sub.dat.summ$YVar+sub.dat.summ$sd, sub.dat.summ$Light + xcoord.adjust, sub.dat.summ$YVar-sub.dat.summ$sd, length = 0.05, angle = 90, code= 3)
+  
+  # 7.3. Add lines connecting the points
+  lines(sub.dat.summ[sub.dat.summ$Bact.short=='R',]$Light + xcoord.adjust,sub.dat.summ[sub.dat.summ$Bact.short=='R',]$YVar, lwd=2 , col = col.strains[i])
+  lines(sub.dat.summ[sub.dat.summ$Bact.short=='X',]$Light + xcoord.adjust,sub.dat.summ[sub.dat.summ$Bact.short=='X',]$YVar, lwd=2 , col = col.strains[i])
+  
+  # 7.4. Add big points representing the mean values 
+  points(sub.dat.summ[sub.dat.summ$Bact.short=='R',]$Light + xcoord.adjust,sub.dat.summ[sub.dat.summ$Bact.short=='R',]$YVar,pch=pch.R,cex=1.5*ptcex.R,bg=col.strains[i],col=col.strains[i])
+  points(sub.dat.summ[sub.dat.summ$Bact.short=='X',]$Light + xcoord.adjust,sub.dat.summ[sub.dat.summ$Bact.short=='X',]$YVar,pch=pch.X,cex=1.5*ptcex.X,bg='white',col=col.strains[i])
+}
+
+  # 8. Add a legend
+  legend(x = legendlocn, inset = 0.00, legend=c('High Bacteria', 'Low Bacteria'), pch=c(pch.R,pch.X), pt.bg=c('black','white'), horiz=T, pt.cex=1.5*c(ptcex.R,ptcex.X),cex=1,bty='n')
+
+}
+
+```
+
+
+Call the function to make the plot of growth rates
+
+```{r, warning=F,fig.height=2,fig.width=4}
+
+# Set the physical amount of space between each strain's plot
+spacer <- 80
+
+# Use the 'rainbowplot' function defined above to make the plot. Syntax: 
+#   First argument = dataset
+#   Second argument = y-axis variable
+#   Third argument = y-axis label
+#   Fourth argument = x-axis label
+#   Fifth argument = amount of space between plots
+#   Sixth argument = order of the strains
+#   Seventh argument = horizontal line position, or NA if none needed
+#   Eigth argument = location for the legend
+#   Ninth argument = log scaling of y axis, enter 'y' or 'n'
+#   Tenth argument = y axis limits (optional)
+#   Eleventh argument = expansion factor for x-axis label (optional)
+#   Twelfth argument = 'n' if omitting top labels (optional)
+#   xtickomit == omits x tick labels (optional)
+rainbowplot(PAdata,'Growth.Rate','Growth Rate (per day)','Light Level (grouped by strain)',spacer,strains,0,'topright','n')
+
+```
+
+Growth increases and saturates with increasing photosynthetic rates, and is generally higher with higher bacterial availability.
+
+
+# Computing carbon use efficiency
+
+Carbon use efficiency (CUE) = amount of carbon used for growth / (total amount of carbon acquired)
+
+We have the growth rate, which is in units of per day. Or, more explicitly, in units of carbon turned into new biomass per carbon of current biomass per day. That's the numerator of CUE.
+
+For the carbon acquired, we need to sum up the carbon gained through photosynthesis, and the carbon gained through grazing.
+
+For photosynthesis, this is photosynthetic rate * amount of photosynthetic machinery * 12 hrs of sunlight per day. But we have to be careful to do all of this in units of per gram of carbon.
+
+```{r}
+# Growth.Rate <- rate of growth, in units of per day
+# C.perOch <- ng C per Ochromonas cell
+
+# chl.percell <- pg chl-a per cell
+# chl.to.C <- mg chl-a per g C
+# P_I <- electrons transferred per molecule of chlorophyll-a 
+
+Cfix.mult <- 0.01728178 # The multiplier 0.01728178 converts from electrons per chlorophyll molecule per second into pg C per pg chlorophyll-a per hour
+
+PAdata$chl.to.C <- PAdata$chl.percell/PAdata$C.perOch*1000 # mg chl-a per g carbon
+
+# pg C fixed via photosynthesis per pg of Ochromonas per day = electrons per molecule of chl-a per second * [pg C per pg chl-a per hr / electrons per molecule of chl-a per second] * 12hrs of light per day * pg chl per pg C
+PAdata$P_I.perC <- PAdata$P_I*Cfix.mult*12*PAdata$chl.to.C/1000 # multiply by 12 because 12hrs light in each day; divide by 1000 because chl to c in mg per g
+
+
+# Best.g <- number of bacteria estimated to be eaten per Ochromonas cell per day
+
+fgC.per.bact <- 113.5996283 # fentograms C per bacterial cell
+# pg C of bacteria per pg C of Ochromonas per day = bacteria per och per day * 113 fgC/bact * 0.001 pg/fg * 1 och/pg C per och
+PAdata$C.from.grazing.perCperday <- PAdata$Best.g*fgC.per.bact*0.001/PAdata$C.perOch
+
+PAdata$attack.per.C.scaled <- PAdata$attack.per.C*24*1000*1000 # scaled to per g carbon per day
+
+PAdata$CUE <- PAdata$Growth.Rate/(PAdata$C.from.grazing.perCperday+PAdata$P_I.perC)
+
+
+```
+
+Make a barplot of the results
+```{r}
+# Make the barplot
+bargraph.CI(Strain2,CUE,group=Bact.short, data=PAdata,las=1,legend=F,xlab='Ochromonas Strain',ylab='Carbon Use Efficiency',leg.lab=c('High Bacteria','Low Bacteria'),col=mega.col.strains,err.width = .05,ylim=c(0,1.199))
+legend(x='topleft',inset=0.0,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=2.3,pch=22,pt.bg=c('black','gray80'),horiz=T)
+
+# Uncomment to see results of the Tukey test
+#TukeyHSD(aov(CUE~Bact.short*Strain2,data=PAdata))
+
+# Add text labels to indicate significance
+text(x = c(1.5,2.5,4.5,5.5,7.5,8.5,10.5,11.5,13.5,14.5,16.5,17.5,19.5,20.5,22.5,23.5),y=c(0.35,0.85,0.43,.7,.44,.72,.325,.64,.32,.815,.85,.925,.69,1.18,.25,.635),c('a','b','a','b','a','b','a','b','a','b','b','b','b','c','a','b'))
+```
+
+
+We were curious about whether carbon use efficiency tended to decline as growth rates increased. Here's a plot of CUE by strain as a function of growth rate. Generally, no support for this hypothesis.
+
+```{r,fig.height=2,fig.width=4}
+par(mar=c(2,2.5,1.5,1),mfrow=c(2,4))
+for(i in 1:length(strains)){
+  subdat <- PAdata[PAdata$Strain==strains[i]&PAdata$Light<200,]
+  plot(subdat$Growth.Rate,subdat$CUE,xlab='Growth Rate',ylab='Carbon Use Efficiency',main=strains[i],las=1,pch=c(21,22)[as.factor(subdat$Bact.short)],cex=1.5,col=col.strains[i],bg=c(col.strains.bg[i],'white')[as.factor(subdat$Bact.short)])
+}
+```
+
+
+
+# Explaining growth rates with photosynthesis and heterotrophy
+
+
+```{r, fig.height=2.5,fig.width=2.5,warning=F}
+
+par(mar=c(4,4,1,1),mfrow=c(1,1))
+
+# PHOTOSYNTHESIS PREDICTS GROWTH: PHOTOSYNTHESIS PER CARBON
+
+plot(PAdata$Growth.Rate~PAdata$P_I.perC,col=col.strains[as.factor(PAdata$Strain)],las=1,xlab='Photosynthetic Rate (pg C per pg C per d)', ylab='Growth Rate (per day)',lwd=.5,pch=21,type='n')
+
+mu.summ <- summarySE(data = PAdata, measurevar = 'Growth.Rate', groupvars = c('Strain','Bact.short','Light'),na.rm=T)
+PI.summ <- summarySE(data = PAdata, measurevar = 'P_I.perC', groupvars = c('Strain','Bact.short','Light'),na.rm=T)
+
+for(i in 1:length(strains)){
+  sub.mu <- mu.summ[mu.summ$Strain==strains[i],]
+  sub.pi <- PI.summ[PI.summ$Strain==strains[i],]
+  arrows(sub.pi$P_I.perC,sub.mu$Growth.Rate+sub.mu$se,sub.pi$P_I.perC,sub.mu$Growth.Rate-sub.mu$se,code=3,angle=90,length=0.05)
+  arrows(sub.pi$P_I.perC+sub.pi$se,sub.mu$Growth.Rate,sub.pi$P_I.perC-sub.pi$se,sub.mu$Growth.Rate,code=3,angle=90,length=0.05)
+  points(sub.mu$Growth.Rate~sub.pi$P_I.perC,pch=c(pch.R,pch.X)[as.factor(sub.mu$Bact.short)],col=col.strains[i],lwd=2,cex=1.5*c(ptcex.R,ptcex.X)[as.factor(sub.mu$Bact.short)],bg=c(col.strains[i],'white')[as.factor(sub.mu$Bact.short)])
+}
+
+rect(-10,-10,100,10,col=rgb(1,1,1,.5)) # Adds a white rectangle that's 50% transparent to make the points "fade out" a little bit
+
+for(i in 1:length(strains)){
+  sub.mu <- mu.summ[mu.summ$Strain==strains[i],]
+  sub.pi <- PI.summ[PI.summ$Strain==strains[i],]
+  
+  data.x <- as.data.frame(cbind(sub.mu[sub.mu$Bact.short=='X',]$Growth.Rate,sub.pi[sub.pi$Bact.short=='X',]$P_I.perC))
+  colnames(data.x) <- c('Growth','PI')
+  c.est <- data.x[1,1]
+  a.est <- 5
+  data.x[1,2] <- 0
+  fit.x <- nls(Growth~a*PI/(h + PI)+c, data = data.x, start = list(a = a.est, h =1, c = c.est))
+  pi.min <- min(data.x$PI,na.rm=T); pi.max <- max(data.x$PI,na.rm=T); pi.set <- seq(from=pi.min,to = pi.max,length.out=50)
+  mu.set <- summary(fit.x)$parameters[1,1]*pi.set / (summary(fit.x)$parameters[2,1]+pi.set)+summary(fit.x)$parameters[3,1]
+  lines(pi.set,mu.set,lwd=2,col=col.strains[i],lty=2)
+  
+  data.r <- as.data.frame(cbind(sub.mu[sub.mu$Bact.short=='R',]$Growth.Rate,sub.pi[sub.pi$Bact.short=='R',]$P_I.perC))
+  colnames(data.r) <- c('Growth','PI')
+  c.est <- data.r[1,1]
+  a.est <- (data.r[2,1]-data.r[1,1])/data.r[2,2]
+  fit.r <- nls(Growth~a*PI/(h + PI)+c, data = data.r, start = list(a = a.est, h =1, c = c.est))
+  pi.min <- min(data.r$PI,na.rm=T); pi.max <- max(data.r$PI,na.rm=T); pi.set <- seq(from=pi.min,to = pi.max,length.out=50)
+  mu.set <- summary(fit.r)$parameters[1,1]*pi.set / (summary(fit.r)$parameters[2,1]+pi.set)+summary(fit.r)$parameters[3,1]
+  lines(pi.set,mu.set,lwd=2,col=col.strains[i])
+}
+
+legend(x = 'bottomright', inset = 0.01, legend=strains, pch=21,pt.cex=1.5, col=col.strains,pt.bg=col.strains, title='Strain',pt.lwd=2)
+legend(x = .7, y = 0.1, legend=c('High','Low'), title='Prey',pch=c(pch.R,pch.X),pt.cex=1.5*c(ptcex.R,ptcex.X),pt.bg=c('black','white'),pt.lwd=2)
+
+```
+
+
+
+Supplemental figure for heterotrophy
+
+```{r, fig.height=2.5,fig.width=2.5,warning=F}
+
+par(mar=c(4,4,1,1),mfrow=c(1,1))
+
+plot(PAdata$Growth.Rate~PAdata$C.from.grazing.perCperday,col=col.strains[as.factor(PAdata$Strain)],las=1,xlab='Phagotrophy Rate (pg C per pg C per d)', ylab='Growth Rate (per day)',lwd=.5,pch=21,type='n',log='x',xlim=c(0.01,50),ylim=c(0.15,1))
+
+mu.summ <- summarySE(data = PAdata, measurevar = 'Growth.Rate', groupvars = c('Strain','Bact.short','Light'),na.rm=T)
+het.summ <- summarySE(data = PAdata, measurevar = 'C.from.grazing.perCperday', groupvars = c('Strain','Bact.short','Light'),na.rm=T)
+
+for(i in 1:length(strains)){
+  sub.mu <- mu.summ[mu.summ$Strain==strains[i],]
+  sub.pi <- het.summ[het.summ$Strain==strains[i],]
+  arrows(sub.pi$C.from.grazing.perCperday,sub.mu$Growth.Rate+sub.mu$se,sub.pi$C.from.grazing.perCperday,sub.mu$Growth.Rate-sub.mu$se,code=3,angle=90,length=0.05)
+  arrows(sub.pi$C.from.grazing.perCperday+sub.pi$se,sub.mu$Growth.Rate,sub.pi$C.from.grazing.perCperday-sub.pi$se,sub.mu$Growth.Rate,code=3,angle=90,length=0.05)
+  points(sub.mu$Growth.Rate~sub.pi$C.from.grazing.perCperday,pch=c(pch.R,pch.X)[as.factor(sub.mu$Bact.short)],col=col.strains[i],lwd=2,cex=1.5*c(ptcex.R,ptcex.X)[as.factor(sub.mu$Bact.short)],bg=c(col.strains[i],'white')[as.factor(sub.mu$Bact.short)])
+}
+
+legend(x = 'topleft', inset = 0.01, legend=strains, pch=21,pt.cex=1.5, col=col.strains,pt.bg=col.strains,title='Strain',pt.lwd=2)
+#legend(x = 'topleft', inset = 0.01, legend=strains, pch=21,pt.cex=1.5, col=col.strains,pt.bg=col.strains,title='Strain')
+
+legend(x = .04, y = 1.025, legend=c('High','Low'), title='Prey',pch=c(pch.R,pch.X),pt.cex=1.5*c(ptcex.R,ptcex.X),pt.bg=c('black','white'),pt.lwd=2)
+```
+
+
+# Phenotypic plasticity
+
+Mixotroph metabolic investment traits vary with environmental conditions. (1) Chlorophyll investment decreases with light. (2) Attack rates decrease with prey availability
+
+```{r,fig.height=2.2,fig.width=2.5}
+
+# Set the amount of space between each curve
+spacer <- 80
+
+# Set up 2-row figure
+
+matrixreps <- 10
+layout(matrix(c(3,rep(1,matrixreps),rep(2,matrixreps),4),nrow=2+2*matrixreps,ncol=1))
+par(mar=c(1,4,0,0.1))
+
+
+# TOP ROW: CHLOROPHYLL
+rainbowplot(PAdata,'chl.to.C','Chlorophyll (mg Chl-a per g C)','',spacer,strains,NA,'topright','n',xtickomit='T')
+mtext('(a)',side=1,at=-235,line=-16)
+
+# BOTTOM ROW: ATTACK RATE
+rainbowplot(PAdata[PAdata$Light>0,],'attack.per.C.scaled','Attack rate (per g C per day)','Light Level (grouped by strain)',spacer,strains,NA,'topleft','y',c(.08,20),toplabomit='T',xlab.cex = .7)
+mtext('(b)',side=1,at=-235,line=-16)
+
+```
+
+
+
+# Tradeoffs
+
+Some lineages experience sharp tradeoffs between investments: As chlorophyll per carbon increases, attack rates per carbon decrease. These tradeoffs only seem to emerge when growth rates are low, implying that cells are resource-limited and thus might be maximizing their investments in each form of metabolism.
+
+```{r, warning=F, fig.height=2,fig.width=4}
+
+# Compile summary data
+
+PAdata$Strain.Bact.Light <- paste(PAdata$Strain,PAdata$Bact.short,PAdata$Light,sep='.')
+growth.summ.C <- summarySE(data=PAdata[PAdata$Light>0,],'Growth.Rate',groupvars=c('Strain.Bact.Light'),na.rm=T)
+chl.summ.C <- summarySE(data=PAdata[PAdata$Light>0,],'chl.to.C',groupvars=c('Strain.Bact.Light'),na.rm=T)
+att.summ.C <- summarySE(data=PAdata[PAdata$Light>0,],'attack.per.C.scaled',groupvars=c('Strain.Bact.Light'),na.rm=T)
+
+
+growth.summ.C$mean.chl <- chl.summ.C$chl.to.C[match(growth.summ.C$Strain.Bact.Light,chl.summ.C$Strain.Bact.Light)]
+growth.summ.C$se.chl <- chl.summ.C$se[match(growth.summ.C$Strain.Bact.Light,chl.summ.C$Strain.Bact.Light)]
+
+growth.summ.C$mean.att <- att.summ.C$attack.per.C.scaled[match(growth.summ.C$Strain.Bact.Light,att.summ.C$Strain.Bact.Light)]
+growth.summ.C$se.att <- att.summ.C$se[match(growth.summ.C$Strain.Bact.Light,att.summ.C$Strain.Bact.Light)]
+
+
+growth.summ.C$Strain <- PAdata$Strain[match(growth.summ.C$Strain.Bact.Light,PAdata$Strain.Bact.Light)]
+growth.summ.C$Bact.short <- PAdata$Bact.short[match(growth.summ.C$Strain.Bact.Light,PAdata$Strain.Bact.Light)]
+
+
+# Set up plot
+par(mar=c(2,2.2,.4,.4),mfrow=c(2,4))
+subplotlabels <- c("(a)","(b)",'(c)',"(d)","(e)","(f)","(g)","(h)")
+
+for(i in 1:length(strains)){
+  plot(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$chl.to.C,PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$attack.per.C.scaled,xlab='Photo. Invest.', ylab='Hetero. Invest.',type='n',las=1,cex.axis=1.5)
+  
+  # Subset the data for the strain
+  subdat <- growth.summ.C[growth.summ.C$Strain==strains[i],]
+  
+  # Set up color ramp based on growth rate
+  subdat$order <- findInterval(subdat$Growth.Rate,sort(subdat$Growth.Rate))
+  pal = colorRampPalette(c("white",col.strains[i]))
+  #pal = colorRampPalette(c(col.strains[i],"white"))
+  
+  # Add convex hull
+  ch <- convHull(cbind(subdat$mean.chl,subdat$mean.att))
+  plot(ch,add=T,col=pal(10)[2],lty=3,border='gray50')
+  
+  # Add error bars
+  arrows(subdat$mean.chl+subdat$se.chl,subdat$mean.att,subdat$mean.chl-subdat$se.chl,subdat$mean.att,angle=90,code=3,length=.05)
+  arrows(subdat$mean.chl,subdat$mean.att+subdat$se.att,subdat$mean.chl,subdat$mean.att-subdat$se.att,angle=90,code=3,length=.05)
+  
+  # Add points
+  points(subdat$mean.chl,subdat$mean.att,pch=c(21,24)[as.factor(subdat$Bact.short)],cex=1.3*c(1.6,1.5)[as.factor(subdat$Bact.short)],lwd=1,bg=pal(nrow(subdat))[subdat$order]) #c('goldenrod','dodgerblue')[as.factor(sub.chl$Bact.short)])
+  text(mean(c(min(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$chl.to.C,na.rm=T),max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$chl.to.C,na.rm=T))),max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$attack.per.C.scaled,na.rm=T)*.92,paste('CCMP ',strains[i],sep=''),col=col.strains[i],pos=3,cex=1.5)
+  text(min(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$chl.to.C,na.rm=T)*1.08,max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$attack.per.C.scaled,na.rm=T)*.92,subplotlabels[i],pos=3,cex=1.5)
+}
+
+
+```
+
+
+
+# Measuring synergies vs tradeoffs
+
+Just because you have a tradeoff in how you can make investments doesn't mean that you can't experience synergies in the yields of those investments.
+
+What would this look like?
+
+We know how to look for tradeoffs in investments by looking for cases in which attack rates and chlorophyll have negative relationships. But how can we observe synergies?
+
+1. Photosynthetic efficiency, rate of photosynthesis per chlorophyll, and rate of photosynthesis per carbon in high and low prey levels
+
+```{r, warning=F,fig.height=4,fig.width=3}
+# Set up 3-row figure
+par(mar=c(4,4,1,1),mfrow=c(3,1))
+
+layout(matrix(c(4,1,1,1,2,2,2,3,3,3,5),nrow=11,ncol=1))
+par(mar=c(1,4,0,.3))
+
+## ROW 1:
+
+# Set the amount of space between each curve
+spacer <- 80
+
+# TOP ROW: Photosynthetic efficiency
+rainbowplot(PAdata[PAdata$Light>-10,],'Fv.Fm','Photosynthetic Efficiency (Fv/Fm)','',spacer,strains,NA,'bottomleft','n',xlab.cex=.7,xtickomit = T)
+mtext('(a)',side=1,at=-205,line=-17.5)
+
+# MIDDLE ROW: PHOTOSYNTHESIS PER CHLOROPHYLL
+rainbowplot(PAdata,'P_I','Photosynthetic Rate (e- per chl-a per s)','',spacer,strains,NA,'topleft','n',xlab.cex=.7,xtickomit = T,toplabomit = T)
+mtext('(b)',side=1,at=-205,line=-17.5)
+
+# BOTTOM ROW: PHOTOSYNTHESIS PER CARBON
+rainbowplot(PAdata,'P_I.perC','Photosynthetic Rate (g C per g C per d)','Light Level (grouped by strain)',spacer,strains,NA,'topright','n',xlab.cex=.7,toplabomit = T)
+mtext('(c)',side=1,at=-205,line=-17.5)
+
+```
+
+2. Rates of grazing as a function of photosynthetic rates
+
+```{r, warning=F, fig.height=2,fig.width=4.2}
+
+# Add new summary data
+
+phot.summ.C <- summarySE(data=PAdata[PAdata$Light>0,],'P_I.perC',groupvars=c('Strain.Bact.Light'),na.rm=T)
+graz.summ.C <- summarySE(data=PAdata[PAdata$Light>0,],'C.from.grazing.perCperday',groupvars=c('Strain.Bact.Light'),na.rm=T)
+
+
+growth.summ.C$mean.phot <- phot.summ.C$P_I.perC[match(growth.summ.C$Strain.Bact.Light,phot.summ.C$Strain.Bact.Light)]
+growth.summ.C$se.phot <- phot.summ.C$se[match(growth.summ.C$Strain.Bact.Light,phot.summ.C$Strain.Bact.Light)]
+
+growth.summ.C$mean.graz <- graz.summ.C$C.from.grazing.perCperday[match(growth.summ.C$Strain.Bact.Light,graz.summ.C$Strain.Bact.Light)]
+growth.summ.C$se.graz <- graz.summ.C$se[match(growth.summ.C$Strain.Bact.Light,graz.summ.C$Strain.Bact.Light)]
+
+
+# Set up plot
+#par(mar=c(4,4,1,1),mfrow=c(2,4))
+par(mar=c(2,2.7,.4,.3),mfrow=c(2,4))
+
+
+for(i in 1:length(strains)){
+  plot(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$P_I.perC,PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$C.from.grazing.perCperday,xlab='Photo. Rate', ylab='Hetero. Rate',type='n',las=1,cex.axis=1.5)
+  
+  # Subset the data for the strain
+  subdat <- growth.summ.C[growth.summ.C$Strain==strains[i],]
+  
+  # Set up color ramp based on growth rate
+  subdat$order <- findInterval(subdat$Growth.Rate,sort(subdat$Growth.Rate))
+  pal = colorRampPalette(c("white",col.strains[i]))
+  #pal = colorRampPalette(c(col.strains[i],"white"))
+  
+  # Add convex hull
+  ch <- convHull(cbind(subdat$mean.phot,subdat$mean.graz))
+  plot(ch,add=T,col=pal(10)[2],lty=3,border='gray50')
+  
+  # Add error bars
+  arrows(subdat$mean.phot+subdat$se.phot,subdat$mean.graz,subdat$mean.phot-subdat$se.phot,subdat$mean.graz,angle=90,code=3,length=.05)
+  arrows(subdat$mean.phot,subdat$mean.graz+subdat$se.graz,subdat$mean.phot,subdat$mean.graz-subdat$se.graz,angle=90,code=3,length=.05)
+  
+  # Add points
+  points(subdat$mean.phot,subdat$mean.graz,pch=c(21,24)[as.factor(subdat$Bact.short)],cex=1.3*c(1.6,1.5)[as.factor(subdat$Bact.short)],lwd=1,bg=pal(nrow(subdat))[subdat$order])
+  
+  text(mean(c(min(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$P_I.perC,na.rm=T),max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$P_I.perC,na.rm=T))),max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$C.from.grazing.perCperday,na.rm=T)*.925,paste('CCMP ',strains[i],sep=''),col=col.strains[i],pos=3, cex=1.5)
+  text(min(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$P_I.perC,na.rm=T)*1.15,max(PAdata[PAdata$Light>0&PAdata$Strain==strains[i],]$C.from.grazing.perCperday,na.rm=T)*.92,subplotlabels[i],pos=3,cex=1.5)
+}
+
+
+```
+
+
+
+
+## Do a nitrogen budget
+
+First let's make bargraphs of the C per cell, N per cell, and C:N ratios of the Ochromonas.
+
+```{r,fig.height=4,fig.width=3}
+
+# Some data cleanup
+CNdata$Strain2 <- factor(CNdata$Strain,levels=strains) # Orders the strains for plotting according to growth differential
+CNdata$Bact.short <- substr(CNdata$Bact,1,1) # Uses the first character of the bacterial treatment as the identifier
+CNdata <- CNdata[CNdata$Bact.short%in%c("X","R"),] # Eliminates additional data (e.g., CN analyzer controls and empty rows)
+
+layout(matrix(c(1,1,1,2,2,2,3,3,3,4),nrow=10))
+par(mar=c(1,5,2,.5))
+
+bargraph.CI(Strain2,C.perOch,group=Bact.short, data=CNdata,las=1,legend=F,xlab='',ylab='',col=mega.col.strains,err.width = .05, cex.axis=1.5, cex.names=1.5)
+legend(x='topleft',inset=0.0,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=3,pch=22,pt.bg=c('gray30','gray80'),cex=1.5)
+mtext('pg C per cell',side=2,line=3,cex=1.)
+mtext('(a)',side=1,line=-16.5,at=-2,cex=1.3)
+
+bargraph.CI(Strain2,N.perOch,group=Bact.short, data=CNdata,las=1,legend=F,xlab='',ylab='',col=mega.col.strains,err.width = .05, cex.axis=1.5, cex.names=1.5)
+#legend(x='topleft',inset=0.0,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=3,pch=22,pt.bg=c('gray30','gray80'),cex=1.5)
+mtext('pg N per cell',side=2,line=3,cex=1.)
+mtext('(b)',side=1,line=-16.5,at=-2,cex=1.3)
+
+bargraph.CI(Strain2,CN.Och,group=Bact.short, data=CNdata,las=1,legend=F,xlab='Ochromonas Strain',ylab='',col=mega.col.strains,err.width = .05, cex.axis=1.5, cex.names=1.5)
+#legend(x='topleft',inset=0.0,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=3,pch=22,pt.bg=c('gray30','gray80'),cex=1.5)
+mtext('Ochromonas Strain',side=1,line=3,cex=1)
+mtext('C:N Ratio',side=2,line=3,cex=1.)
+mtext('(c)',side=1,line=-16.5,at=-2,cex=1.3)
+
+```
+
+
+Here we are calculating the amount of nitrogen that the cells get from grazing, vs how much they need to get in order to make their own machinery. Negative numbers mean they have to be taking up some inorganic N directly.
+
+```{r}
+
+CN.bacteria <- 106/16 # 10.1 # Average number from Michelle's data. 
+PAdata$N.from.grazing.perCperday <- PAdata$C.from.grazing.perCperday/CN.bacteria # Convert carbon from bacteria into nitrogen from bacteria
+PAdata$N.from.grazing.perNperday <- PAdata$N.from.grazing.perCperday*(PAdata$C.perOch/PAdata$N.perOch) #multiply by Ochromonas C:N ratio to get Nitrogen per Ochromonas Nitrogen per day
+
+PAdata$N.deficit <- (PAdata$N.from.grazing.perNperday - PAdata$Growth.Rate)/PAdata$Growth.Rate
+
+bargraph.CI(Strain2,N.deficit,group=Bact.short, data=PAdata[PAdata$Light>0,],las=1,legend=F,xlab='Ochromonas Strain',ylab='N into biomass per N acq via grazing',leg.lab=c('High Bacteria','Low Bacteria'),col=mega.col.strains,err.width = .05)
+legend(x='topleft',inset=0.05,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=2,pch=22,pt.bg=c('gray30','gray80'))
+abline(h=0)
+
+#plot(PAdata$Growth.Rate~PAdata$N.from.grazing.perCperday)
+#abline(a = 0,b = 1)
+
+rainbowplot(PAdata[PAdata$Light>0,],'N.deficit','Unused N (gN per gN per day)','Light Level (grouped by strain)',spacer,strains,0,'topleft',logchoice='n',ylimits=c(-1,12))
+
+```
+
+Generally, numbers are positive, indicating that (so long as we assume 100% conversion efficiency) Ochromonas cells can meet their N demand from phagotrophy.
+
+
+## Nitrogen budget for the total culture
+
+```{r,warning=F}
+NO3.molar.media <- 0.000882  # concentration of N in Nitrate in K media
+# https://ncma.bigelow.org/PDF%20Files/DOC-050.000%20NCMA%20Website%20algal%20medium%20K%202020.pdf
+
+
+Approx.Och.Conc <- 200000 # approx max population size of Ochromonas per mL while still in exponential growth
+
+PAdata$TotalNinOch.pgNpermL <- PAdata$N.perOch*Approx.Och.Conc
+PAdata$TotalNinOch.molperL <- PAdata$TotalNinOch.pgNpermL * 1000 / (10^12) / 14.01 # 1000 mL per L; 10^12 pg per g; 14.01 g per mol N
+
+
+bargraph.CI(Strain,TotalNinOch.molperL*1000,group=Bact.short, data=PAdata[PAdata$Strain!=2616,],las=1,legend=F,xlab='Ochromonas Strain',ylab='mmoles per L N in Ochromonas',leg.lab=c('High Bacteria','Low Bacteria'),col=mega.col.strains,err.width = .05,ylim=c(0,NO3.molar.media*1000))
+legend(x='topright',inset=0.0,legend=c('High Bacteria','Low Bacteria'),bty='n',pt.cex=2,pch=22,pt.bg=c('gray30','gray80'))
+abline(h=NO3.molar.media*1000,lty=2)
+text(0,NO3.molar.media*950,'Nitrate added to media (mmoles per L)',pos=4)
+
+
+```
+
+
+We can see that the cultures used 10% or less of the total N available to them in the culture, suggesting that cultures were not N-limited at the time that physiological data were being collected.
+
+
+
+# LOCATION OF STRAIN ORIGINS
+
+```{r,warning=F, fig.height=2,fig.width=4}
+newmap <- getMap(resolution="low")
+par(mar=c(0,0,0,0))
+plot(newmap,xlim=c(-180,180),ylim=c(-90,90),col='white')
+text(metadata$TextLon-5,metadata$TextLat,metadata$Strain,pos=4)
+arrows(metadata$Lon,metadata$Lat,metadata$TextLon,metadata$TextLat,length=0,lwd=1.5)
+points(metadata$Lon,metadata$Lat,pch=8,cex=1.5,col='red')
+```
+
+
+# Supplemental figure on bacterial abundance
+
+```{r,fig.height=2,fig.width=3}
+
+# Some data cleanup
+bact.counts$Bact.short <- substr(bact.counts$Rice,1,1) # Uses the first character of the bacterial treatment as the identifier
+bact.counts$Strain <- factor(bact.counts$OchStrain,levels=strains) # Orders the strains for plotting according to growth differential
+
+par(mar=c(4,5,1,1))
+bargraph.CI(Strain,CFUpmL,group=Bact.short,data=bact.counts[bact.counts$OchStrain!=2616&bact.counts$OldData!='Y',],log='y',ylim=c(2e5,53000000),las=1,xlab='Ochromonas Strain',ylab='', col=mega.col.strains,err.width=.05)
+mtext('Bacterial CFU per mL', side = 2, line = 4)
+legend(x='topright',inset=-.02,legend=c('High Bacteria','Low Bacteria'),pch=22,pt.cex=2.3,horiz=T,bty='n',pt.bg=c('black','gray80'))
+
+```
+
+
+
+
+
+
+
+# Phylogeny explorations
+
+How to conduct a Mantel test: https://stats.oarc.ucla.edu/r/faq/how-can-i-perform-a-mantel-test-in-r/
+
+```{r}
+
+# excise 2616 data from matrix of base pair substitutions
+gendist <- gendist[gendist$X!=2616,]
+gendist <- gendist[,1:9]
+
+
+# create a matrix of physiology summary data to perform correlational analysis on
+strainsumm <- as.data.frame(gendist[,1])
+colnames(strainsumm) <- 'Strain'
+
+growth.summ.C$Strain3 <- factor(growth.summ.C$Strain,levels=strainsumm$Strain)
+
+# insert max data
+strainsumm$growth.max <- tapply(growth.summ.C$Growth.Rate,growth.summ.C$Strain3,FUN= max,na.rm=T)
+strainsumm$chl.max <- tapply(growth.summ.C$mean.chl,growth.summ.C$Strain3,FUN= max,na.rm=T)
+strainsumm$att.max <- tapply(growth.summ.C$mean.att,growth.summ.C$Strain3,FUN= max,na.rm=T)
+strainsumm$phot.max <- tapply(growth.summ.C$mean.phot,growth.summ.C$Strain3,FUN= max,na.rm=T)
+strainsumm$graz.max <- tapply(growth.summ.C$mean.graz,growth.summ.C$Strain3,FUN= max,na.rm=T)
+
+# insert data ranges
+strainsumm$growth.range <- tapply(growth.summ.C$Growth.Rate,growth.summ.C$Strain3,FUN= max,na.rm=T)-tapply(growth.summ.C$Growth.Rate,growth.summ.C$Strain3,FUN= min,na.rm=T)
+strainsumm$chl.range <- tapply(growth.summ.C$mean.chl,growth.summ.C$Strain3,FUN= max,na.rm=T)-tapply(growth.summ.C$mean.chl,growth.summ.C$Strain3,FUN= min,na.rm=T)
+strainsumm$att.range <- tapply(growth.summ.C$mean.att,growth.summ.C$Strain3,FUN= max,na.rm=T)-tapply(growth.summ.C$mean.att,growth.summ.C$Strain3,FUN= min,na.rm=T)
+strainsumm$phot.range <- tapply(growth.summ.C$mean.phot,growth.summ.C$Strain3,FUN= max,na.rm=T)-tapply(growth.summ.C$mean.phot,growth.summ.C$Strain3,FUN= min,na.rm=T)
+strainsumm$graz.range <- tapply(growth.summ.C$mean.graz,growth.summ.C$Strain3,FUN= max,na.rm=T)-tapply(growth.summ.C$mean.graz,growth.summ.C$Strain3,FUN= min,na.rm=T)
+
+# compute the distance matrix for physiology
+physiodist <- dist(prcomp(strainsumm[,2:dim(strainsumm)[2]])$x,diag=T,upper=T)
+
+physiodist <- dist(prcomp(strainsumm[,7:11])$x,diag=T,upper=T)
+
+mantel.test(gendist[,2:9],as.matrix(physiodist))
+
+
+```
+
+Results suggest no strong correlation between genetic distance and physiological differences. 
+
+

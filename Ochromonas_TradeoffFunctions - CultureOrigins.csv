@@ -1,0 +1,10 @@
+Strain,IsolationDate,CultureTemp,CultureMedia,Location.Lat,Location.Lon,Lat,Lon,Location.Desc,Location.Depth,Location.Temp,TextLat,TextLon
+1391,07/07/1980,20*C,"K, ASM2, ASM4",34N,65W,34,-65,N Atlantic Sargasso Sea,20-25m,25*C,-6,-45
+1393,07/07/1980,20*C,"K, ASM2, ASM3",38.702N,72.3667W,38.702,-72.3667,N Atlantic Gulf Stream,20-25m,20*C,43.702,-52.3667
+2951,11/19/2003,24*C,"L1-Si, K, L1",24.76N,125.4422E,24.76,125.4422,"N Pacific, coast of Japan, sand beach",,,19.76,145.4422
+584,07/07/1980,24*C,"K, ASM2, ASM4",34N,65W,34,-65,N Atlantic Sargasso Sea,20-25m,25*C,34,-45
+1392,07/11/1980,20*C,"K, ASM2, ASM3",38.702N,72.3667W,38.702,-72.3667,N Atlantic Gulf Stream,20-25m,20*C,53.702,-52.3667
+2616,2/26/2004,24*C,K,24.7262N,125.2415E,24.7262,125.2415,"N Pacific, Nagama-hama beach, Miyako-Jima, Okinawa Prefecture, Japan",,,29.7262,145.2415
+1148,03/01/1982,24*C,"K, ASM3, ASM4, Prov, Prov50",34N,65W,34,-65,N Atlantic Sargasso Sea,20-25m,25*C,14,-45
+1150,07/07/1980,24*C,"K, ASM4, L/20",34N,65W,34,-65,N Atlantic Sargasso Sea,20-25m,25*C,4,-45
+590,03/01/1982,24*C,"K, ASM3, ASM4, Prov, Prov50",34N,65W,34,-65,N Atlantic Sargasso Sea,20-25m,25*C,24,-45

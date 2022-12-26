@@ -1,0 +1,431 @@
+OldData,Expt,OchStrain,Light,Rice,Rep,Plating.Date,CountDate,AreaCounted,DilutionFactor,CFUs,CountDate,AreaCounted,CFUs,Notes,CFUpmL
+Y,1,1392,25,Rice,C,5 Nov 2021,9 Nov 2021,whole,"10,000",89,12 Nov 2021,whole,191,not using data; incorrect dilution mixing,19100000
+Y,1,1392,25,Rice,B,5 Nov 2021,9 Nov 2021,whole,"10,000",46,12 Nov 2021,whole,98,not using data; incorrect dilution mixing,9800000
+Y,1,1392,25,Rice,A,5 Nov 2021,9 Nov 2021,whole,"10,000",16,12 Nov 2021,whole,54,not using data; incorrect dilution mixing,5400000
+Y,1,1392,25,Xenic,C,5 Nov 2021,9 Nov 2021,whole,"1,000",33,12 Nov 2021,whole,44,not using data; incorrect dilution mixing,440000
+Y,1,1392,25,Xenic,B,5 Nov 2021,9 Nov 2021,whole,"1,000",34,12 Nov 2021,whole,50,not using data; incorrect dilution mixing,500000
+Y,1,1392,25,Xenic,A,5 Nov 2021,9 Nov 2021,whole,"1,000",23,12 Nov 2021,whole,37,not using data; incorrect dilution mixing,370000
+Y,1,1392,150,Xenic,C,5 Nov 2021,9 Nov 2021,whole,"1,000",50,12 Nov 2021,whole,72,not using data; incorrect dilution mixing,720000
+Y,1,1392,150,Xenic,B,5 Nov 2021,9 Nov 2021,whole,"1,000",57,12 Nov 2021,whole,76,not using data; incorrect dilution mixing,760000
+Y,1,1392,150,Xenic,A,5 Nov 2021,9 Nov 2021,whole,"1,000",26,12 Nov 2021,whole,45,not using data; incorrect dilution mixing,450000
+Y,1,1392,150,Rice,C,5 Nov 2021,9 Nov 2021,whole,"10,000",58,12 Nov 2021,whole,119,not using data; incorrect dilution mixing,11900000
+Y,1,1392,150,Rice,B,5 Nov 2021,9 Nov 2021,whole,"10,000",46,12 Nov 2021,whole,79,not using data; incorrect dilution mixing,7900000
+Y,1,1392,150,Rice,A,5 Nov 2021,9 Nov 2021,whole,"10,000",20,12 Nov 2021,whole,40,not using data; incorrect dilution mixing,4000000
+Y,1,590,25,Xenic,B,5 Nov 2021,9 Nov 2021,quarter,"1,000","2,148",,,,not using data; plate got contaminated,0
+,2,1148,25,Rice,A,8 Nov 2021,16 Nov 2021,whole,"10,000",64,18 Nov 2021,whole,65,,6500000
+,2,1148,25,Rice,B,8 Nov 2021,16 Nov 2021,whole,"10,000",47,18 Nov 2021,whole,47,,4700000
+,2,1148,25,Rice,C,8 Nov 2021,16 Nov 2021,whole,"10,000",28,18 Nov 2021,whole,28,,2800000
+,2,1148,50,Rice,A,8 Nov 2021,16 Nov 2021,whole,"10,000",29,18 Nov 2021,whole,29,,2900000
+,2,1148,50,Rice,B,8 Nov 2021,16 Nov 2021,whole,"10,000",55,18 Nov 2021,whole,56,,5600000
+,2,1148,50,Rice,C,8 Nov 2021,16 Nov 2021,whole,"10,000",25,18 Nov 2021,whole,25,,2500000
+,1,1392,150,Xenic,A,9 Nov 2021,16 Nov 2021,whole,"1,000",200,18 Nov 2021,whole,203,replated,2030000
+,1,1392,150,Xenic,B,9 Nov 2021,16 Nov 2021,whole,"1,000",59,18 Nov 2021,whole,60,replated,600000
+,1,1392,150,Xenic,C,9 Nov 2021,16 Nov 2021,whole,"1,000",71,18 Nov 2021,whole,72,replated,720000
+,1,1392,150,Rice,A,9 Nov 2021,16 Nov 2021,whole,"10,000",384,18 Nov 2021,whole,394,replated,39400000
+,1,1392,150,Rice,B,9 Nov 2021,16 Nov 2021,whole,"10,000",319,18 Nov 2021,whole,325,replated,32500000
+,1,1392,150,Rice,C,9 Nov 2021,16 Nov 2021,whole,"10,000",264,18 Nov 2021,whole,277,replated,27700000
+,1,1392,25,Xenic,A,9 Nov 2021,16 Nov 2021,whole,"1,000",97,18 Nov 2021,whole,101,replated,1010000
+,1,1392,25,Xenic,B,9 Nov 2021,16 Nov 2021,whole,"1,000",100,18 Nov 2021,whole,103,replated,1030000
+,1,1392,25,Xenic,C,9 Nov 2021,16 Nov 2021,whole,"1,000",105,18 Nov 2021,whole,110,replated,1100000
+,1,1392,25,Rice,A,9 Nov 2021,16 Nov 2021,whole,"10,000",189,18 Nov 2021,whole,191,replated,19100000
+,1,1392,25,Rice,B,9 Nov 2021,16 Nov 2021,whole,"10,000",368,18 Nov 2021,whole,394,replated,39400000
+,1,1392,25,Rice,C,9 Nov 2021,16 Nov 2021,whole,"10,000",180,18 Nov 2021,whole,186,replated,18600000
+,1,590,25,Xenic,A,9 Nov 2021,16 Nov 2021,whole,"1,000",221,18 Nov 2021,whole,223,replated,2230000
+,1,590,25,Xenic,B,9 Nov 2021,16 Nov 2021,whole,"1,000",249,18 Nov 2021,whole,250,replated,2500000
+,1,590,25,Xenic,C,9 Nov 2021,16 Nov 2021,whole,"1,000",285,18 Nov 2021,whole,289,replated,2890000
+,1,590,25,Rice,A,9 Nov 2021,16 Nov 2021,whole,"10,000",264,18 Nov 2021,whole,266,replated,26600000
+,1,590,25,Rice,B,9 Nov 2021,16 Nov 2021,whole,"10,000",436,18 Nov 2021,whole,441,replated,44100000
+,1,590,25,Rice,C,9 Nov 2021,16 Nov 2021,whole,"10,000",208,18 Nov 2021,whole,210,replated,21000000
+,2,1148,75,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",32,,,,,3200000
+,2,1148,75,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",31,,,,,3100000
+,2,1148,75,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",25,,,,,2500000
+,2,1148,100,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",36,,,,,3600000
+,2,1148,100,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",21,,,,,2100000
+,2,1148,100,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",18,,,,,1800000
+,2,1150,100,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",72,,,,,7200000
+,2,1150,100,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",62,,,,,6200000
+,2,1150,100,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",127,,,,,12700000
+,2,1150,150,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",43,,,,,4300000
+,2,1150,150,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",34,,,,,3400000
+,2,1150,150,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",158,,,,,15800000
+,2,1150,200,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",73,,,,,7300000
+,2,1150,200,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",17,,,,,1700000
+,2,1150,200,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",36,,,,,3600000
+,2,1150,75,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",59,,,,,5900000
+,2,1150,75,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",30,,,,,3000000
+,2,1150,75,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",56,,,,,5600000
+,2,1150,50,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",74,,,,,7400000
+,2,1150,50,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",101,,,,,10100000
+,2,1150,50,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",65,,,,,6500000
+,2,1150,25,Rice,A,10 Nov 2021,17 Nov 2021,whole,"10,000",55,,,,,5500000
+,2,1150,25,Rice,B,10 Nov 2021,17 Nov 2021,whole,"10,000",1334,,,,,133400000
+,2,1150,25,Rice,C,10 Nov 2021,17 Nov 2021,whole,"10,000",77,,,,,7700000
+,1,1392,25,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",196,,,,,1960000
+,1,1392,25,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",125,,,,,1250000
+,1,1392,25,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",158,,,,,1580000
+,1,590,25,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",372,,,,,3720000
+,1,590,25,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",243,,,,,2430000
+,1,590,25,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",438,,,,,4380000
+,2,1148,200,Rice,A,11 Nov 2021,18 Nov 2021,whole,"10,000",457,,,,,45700000
+,2,1148,200,Rice,B,11 Nov 2021,18 Nov 2021,whole,"10,000",44,,,,,4400000
+,2,1148,200,Rice,C,11 Nov 2021,18 Nov 2021,whole,"10,000",25,,,,,2500000
+,2,1148,150,Rice,A,11 Nov 2021,18 Nov 2021,whole,"10,000",9,,,,,900000
+,2,1148,150,Rice,B,11 Nov 2021,18 Nov 2021,whole,"10,000",107,,,,,10700000
+,2,1148,150,Rice,C,11 Nov 2021,18 Nov 2021,whole,"10,000",25,,,,,2500000
+,1,1392,75,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",174,,,,,1740000
+,1,1392,75,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",284,,,,,2840000
+,1,1392,75,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",140,,,,,1400000
+,1,590,75,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",99,,,,,990000
+,1,590,75,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",116,,,,,1160000
+,1,590,75,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",182,,,,,1820000
+,1,590,150,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",112,,,,,1120000
+,1,590,150,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",146,,,,,1460000
+,1,590,150,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",154,,,,,1540000
+,1,1392,150,Xenic,A,11 Nov 2021,18 Nov 2021,whole,"1,000",84,,,,,840000
+,1,1392,150,Xenic,B,11 Nov 2021,18 Nov 2021,whole,"1,000",70,,,,,700000
+,1,1392,150,Xenic,C,11 Nov 2021,18 Nov 2021,whole,"1,000",75,,,,,750000
+,2,1150,200,Xenic,A,13 Nov 2021,22 Nov 2021,whole,"1,000",130,6 Dec 2021,whole,137,,1370000
+,2,1150,200,Xenic,C,13 Nov 2021,22 Nov 2021,whole,"1,000",43,6 Dec 2021,whole,49,,490000
+,2,1150,200,Xenic,B,13 Nov 2021,22 Nov 2021,whole,"1,000",72,6 Dec 2021,whole,72,,720000
+,2,1148,75,Xenic,A,13 Nov 2021,22 Nov 2021,whole,"1,000",53,6 Dec 2021,whole,97,,970000
+,2,1148,75,Xenic,B,13 Nov 2021,22 Nov 2021,whole,"1,000",117,6 Dec 2021,whole,119,,1190000
+,2,1148,75,Xenic,C,13 Nov 2021,22 Nov 2021,whole,"1,000",76,6 Dec 2021,whole,127,,1270000
+,2,1150,150,Xenic,A,12 Nov 2021,22 Nov 2021,whole,"1,000",19,6 Dec 2021,whole,19,,190000
+,2,1150,150,Xenic,B,12 Nov 2021,22 Nov 2021,whole,"1,000",71,6 Dec 2021,whole,71,,710000
+,2,1150,150,Xenic,C,12 Nov 2021,22 Nov 2021,whole,"1,000",98,6 Dec 2021,whole,100,,1000000
+,2,1150,75,Xenic,A,12 Nov 2021,22 Nov 2021,whole,"1,000",23,6 Dec 2021,whole,23,,230000
+,2,1150,75,Xenic,B,12 Nov 2021,22 Nov 2021,whole,"1,000",65,6 Dec 2021,whole,65,,650000
+,2,1150,75,Xenic,C,12 Nov 2021,22 Nov 2021,whole,"1,000",46,6 Dec 2021,whole,47,,470000
+,2,1148,150,Xenic,A,16 Nov 2021,22 Nov 2021,whole,"1,000",61,6 Dec 2021,whole,63,,630000
+,2,1148,150,Xenic,B,16 Nov 2021,22 Nov 2021,whole,"1,000",32,6 Dec 2021,whole,33,,330000
+,2,1148,150,Xenic,C,16 Nov 2021,22 Nov 2021,whole,"1,000",37,6 Dec 2021,whole,38,,380000
+,2,1148,200,Xenic,A,16 Nov 2021,22 Nov 2021,whole,"1,000",16,6 Dec 2021,whole,20,,200000
+,2,1148,200,Xenic,B,16 Nov 2021,22 Nov 2021,whole,"1,000",8,6 Dec 2021,whole,10,,100000
+,2,1148,200,Xenic,C,16 Nov 2021,22 Nov 2021,whole,"1,000",7,6 Dec 2021,whole,7,,70000
+,2,1148,200,Rice,A,16 Nov 2021,22 Nov 2021,whole,"10,000",86,6 Dec 2021,whole,93,,9300000
+,2,1148,200,Rice,B,16 Nov 2021,22 Nov 2021,whole,"10,000",119,6 Dec 2021,whole,120,,12000000
+,2,1148,200,Rice,C,16 Nov 2021,22 Nov 2021,whole,"10,000",192,6 Dec 2021,whole,195,,19500000
+,2,1150,200,Rice,A,16 Nov 2021,22 Nov 2021,whole,"10,000",158,6 Dec 2021,whole,181,,18100000
+,2,1150,200,Rice,B,16 Nov 2021,22 Nov 2021,whole,"10,000",158,6 Dec 2021,whole,159,,15900000
+,2,1150,200,Rice,C,16 Nov 2021,22 Nov 2021,whole,"10,000",62,6 Dec 2021,whole,67,,6700000
+,2,1148,25,Xenic,A,16 Nov 2021,22 Nov 2021,whole,"1,000",5,,,,mold spore contamination; do not use,250000
+,2,1148,25,Xenic,B,16 Nov 2021,22 Nov 2021,whole,"1,000",17,6 Dec 2021,whole,18,,180000
+,2,1148,25,Xenic,C,16 Nov 2021,22 Nov 2021,whole,"1,000",32,6 Dec 2021,whole,32,,320000
+,2,1150,25,Xenic,A,16 Nov 2021,22 Nov 2021,whole,"1,000",23,6 Dec 2021,whole,25,,250000
+,2,1150,25,Xenic,B,16 Nov 2021,22 Nov 2021,whole,"1,000",24,6 Dec 2021,whole,25,,250000
+,2,1150,25,Xenic,C,16 Nov 2021,22 Nov 2021,whole,"1,000",25,6 Dec 2021,whole,26,,260000
+,2,1150,50,Rice,A,17 Nov 2021,22 Nov 2021,whole,"10,000",168,6 Dec 2021,whole,169,,16900000
+,2,1150,50,Rice,B,17 Nov 2021,22 Nov 2021,whole,"10,000",64,6 Dec 2021,whole,64,,6400000
+,2,1150,50,Rice,C,17 Nov 2021,22 Nov 2021,whole,"10,000",222,6 Dec 2021,whole,228,,22800000
+,2,1148,50,Rice,A,17 Nov 2021,22 Nov 2021,whole,"10,000",291,6 Dec 2021,whole,294,,29400000
+,2,1148,50,Rice,B,17 Nov 2021,22 Nov 2021,whole,"10,000",649,6 Dec 2021,whole,654,,65400000
+,2,1148,50,Rice,C,17 Nov 2021,22 Nov 2021,whole,"10,000",717,6 Dec 2021,whole,737,,73700000
+,2,1148,100,Rice,A,17 Nov 2021,22 Nov 2021,whole,"10,000",104,6 Dec 2021,whole,105,,10500000
+,2,1148,100,Rice,B,17 Nov 2021,22 Nov 2021,whole,"10,000",175,6 Dec 2021,whole,176,,17600000
+,2,1148,100,Rice,C,17 Nov 2021,22 Nov 2021,whole,"10,000",265,6 Dec 2021,whole,271,,27100000
+,2,1150,100,Rice,A,17 Nov 2021,22 Nov 2021,whole,"10,000",174,6 Dec 2021,whole,176,,17600000
+,2,1150,100,Rice,B,17 Nov 2021,22 Nov 2021,whole,"10,000",99,6 Dec 2021,whole,100,,10000000
+,2,1150,100,Rice,C,17 Nov 2021,22 Nov 2021,whole,"10,000",135,6 Dec 2021,whole,136,,13600000
+,2,1150,15,Rice,A,19 Nov 2021,23 Nov 2021,whole,"10,000",72,6 Dec 2021,whole,76,,7600000
+,2,1150,15,Rice,B,19 Nov 2021,23 Nov 2021,whole,"10,000",100,6 Dec 2021,whole,103,,10300000
+,2,1150,15,Rice,C,19 Nov 2021,23 Nov 2021,whole,"10,000",118,6 Dec 2021,whole,123,,12300000
+,2,1148,15,Rice,A,19 Nov 2021,23 Nov 2021,whole,"10,000",186,6 Dec 2021,whole,191,,19100000
+,2,1148,15,Rice,B,19 Nov 2021,23 Nov 2021,whole,"10,000",748,6 Dec 2021,whole,769,,76900000
+,2,1148,15,Rice,C,19 Nov 2021,23 Nov 2021,whole,"10,000",724,6 Dec 2021,whole,731,,73100000
+,1,1392,75,Xenic,A,2 Nov,8 Nov,whole,"1,000",134,12 Nov,whole,142,,1420000
+,1,1392,75,Rice,C,2 Nov,8 Nov,whole,"10,000",75,12 Nov,whole,101,,10100000
+,1,1392,75,Xenic,B,2 Nov,8 Nov,whole,"1,000",60,12 Nov,whole,65,,650000
+,1,1392,75,Xenic,C,2 Nov,8 Nov,whole,"1,000",51,12 Nov,whole,51,,510000
+,1,1392,75,Rice,A,2 Nov,8 Nov,whole,"10,000",116,12 Nov,whole,118,,11800000
+,1,1392,75,Rice,B,2 Nov,8 Nov,whole,"10,000",94,12 Nov,whole,107,,10700000
+,1,590,75,Xenic,A,2 Nov,8 Nov,whole,"1,000",97,12 Nov,whole,103,,1030000
+,1,590,75,Xenic,B,2 Nov,8 Nov,whole,"1,000",99,12 Nov,whole,104,,1040000
+,1,590,75,Rice,B,2 Nov,8 Nov,whole,"10,000",236,12 Nov,whole,250,,25000000
+,1,590,75,Xenic,C,2 Nov,8 Nov,whole,"1,000",173,12 Nov,whole,173,,1730000
+,1,590,75,Rice,A,2 Nov,8 Nov,whole,"10,000",194,12 Nov,whole,196,,19600000
+,1,590,75,Rice,C,2 Nov,8 Nov,whole,"10,000",46,12 Nov,whole,51,,5100000
+,1,590,150,Xenic,A,2 Nov,8 Nov,whole,"1,000",69,12 Nov,whole,79,,790000
+,1,590,150,Xenic,C,2 Nov,8 Nov,whole,"1,000",106,12 Nov,whole,115,,1150000
+,1,590,150,Rice,B,2 Nov,8 Nov,whole,"10,000",204,12 Nov,whole,215,,21500000
+,1,590,150,Xenic,B,2 Nov,8 Nov,whole,"1,000",97,12 Nov,whole,103,,1030000
+,1,590,150,Rice,A,2 Nov,8 Nov,whole,"10,000",101,12 Nov,whole,109,,10900000
+,1,590,150,Rice,C,2 Nov,8 Nov,whole,"10,000",352,12 Nov,whole,365,,36500000
+,2,1148,100,Xenic,A,23 Nov,29 Nov,whole,"1,000",19,6 Dec 2021,whole,19,,190000
+,2,1148,100,Xenic,B,23 Nov,29 Nov,whole,"1,000",20,6 Dec 2021,whole,20,,200000
+,2,1148,100,Xenic,C,23 Nov,29 Nov,whole,"1,000",31,6 Dec 2021,whole,33,,330000
+,2,1150,100,Xenic,A,23 Nov,29 Nov,whole,"1,000",12,6 Dec 2021,whole,13,,130000
+,2,1150,100,Xenic,B,23 Nov,29 Nov,whole,"1,000",22,6 Dec 2021,whole,23,,230000
+,2,1150,100,Xenic,C,23 Nov,29 Nov,whole,"1,000",10,6 Dec 2021,whole,10,,100000
+,2,1148,50,Xenic,A,23 Nov,29 Nov,whole,"1,000",22,6 Dec 2021,whole,53,,530000
+,2,1148,50,Xenic,B,23 Nov,29 Nov,whole,"1,000",14,6 Dec 2021,whole,14,,140000
+,2,1148,50,Xenic,C,23 Nov,29 Nov,whole,"1,000",10,6 Dec 2021,whole,11,,110000
+,2,1150,50,Xenic,A,23 Nov,29 Nov,whole,"1,000",105,6 Dec 2021,whole,107,,1070000
+,2,1150,50,Xenic,B,23 Nov,29 Nov,whole,"1,000",66,6 Dec 2021,whole,66,,660000
+,2,1150,50,Xenic,C,23 Nov,29 Nov,whole,"1,000",40,6 Dec 2021,whole,41,,410000
+,2,1148,15,Xenic,A,29 Nov,6 Dec,whole,"1,000",43,,,,,430000
+,2,1148,15,Xenic,B,29 Nov,6 Dec,whole,"1,000",47,,,,,470000
+,2,1148,15,Xenic,C,29 Nov,6 Dec,whole,"1,000",56,,,,,560000
+,2,1150,15,Xenic,A,29 Nov,6 Dec,whole,"1,000",28,,,,,280000
+,2,1150,15,Xenic,B,29 Nov,6 Dec,whole,"1,000",39,,,,,390000
+,2,1150,15,Xenic,C,29 Nov,6 Dec,whole,"1,000",37,,,,,370000
+,3,1393,150,Rice,A,2 Dec,8 Dec,whole,"10,000",833,,,,,83300000
+,3,1393,150,Rice,B,2 Dec,8 Dec,whole,"10,000",459,,,,,45900000
+,3,1393,150,Rice,C,2 Dec,8 Dec,whole,"10,000",339,,,,,33900000
+,3,1393,100,Rice,A,2 Dec,8 Dec,whole,"10,000",188,,,,,18800000
+,3,1393,100,Rice,B,2 Dec,8 Dec,whole,"10,000",352,,,,,35200000
+,3,1393,100,Rice,C,2 Dec,8 Dec,whole,"10,000",150,,,,,15000000
+,3,584,50,Rice,A,3 Dec,9 Dec,whole,"10,000",233,,,,,23300000
+,3,584,50,Rice,B,3 Dec,9 Dec,whole,"10,000",245,,,,,24500000
+,3,584,50,Rice,C,3 Dec,9 Dec,whole,"10,000",239,,,,,23900000
+,3,1393,50,Rice,A,3 Dec,9 Dec,whole,"10,000",511,,,,,51100000
+,3,1393,50,Rice,B,3 Dec,9 Dec,whole,"10,000",369,,,,,36900000
+,3,1393,50,Rice,C,3 Dec,9 Dec,whole,"10,000",219,,,,,21900000
+,3,584,100,Rice,A,3 Dec,9 Dec,whole,"10,000",118,,,,,11800000
+,3,584,100,Rice,B,3 Dec,9 Dec,whole,"10,000",156,,,,,15600000
+,3,584,100,Rice,C,3 Dec,9 Dec,whole,"10,000",126,,,,,12600000
+,3,584,150,Rice,A,3 Dec,9 Dec,whole,"10,000",160,,,,,16000000
+,3,584,150,Rice,B,3 Dec,9 Dec,whole,"10,000",132,,,,,13200000
+,3,584,150,Rice,C,3 Dec,9 Dec,whole,"10,000",137,,,,,13700000
+,3,584,75,Rice,A,3 Dec,9 Dec,whole,"10,000",211,,,,,21100000
+,3,584,75,Rice,B,3 Dec,9 Dec,whole,"10,000",238,,,,,23800000
+,3,584,75,Rice,C,3 Dec,9 Dec,whole,"10,000",262,,,,,26200000
+,3,1393,75,Rice,A,3 Dec,9 Dec,whole,"10,000",434,,,,,43400000
+,3,1393,75,Rice,B,3 Dec,9 Dec,whole,"10,000",395,,,,,39500000
+,3,1393,75,Rice,C,3 Dec,9 Dec,whole,"10,000",334,,,,,33400000
+,3,584,15,Rice,A,6 Dec,15 Dec,whole,"10,000",138,,,,,13800000
+,3,584,15,Rice,B,6 Dec,15 Dec,whole,"10,000",122,,,,,12200000
+,3,584,15,Rice,C,6 Dec,15 Dec,whole,"10,000",103,,,,,10300000
+,3,1393,15,Rice,A,6 Dec,15 Dec,whole,"10,000",386,,,,,38600000
+,3,1393,15,Rice,B,6 Dec,15 Dec,whole,"10,000",228,,,,,22800000
+,3,1393,15,Rice,C,6 Dec,15 Dec,whole,"10,000",244,,,,,24400000
+,3,1393,25,Rice,A,6 Dec,15 Dec,whole,"10,000",283,,,,,28300000
+,3,1393,25,Rice,B,6 Dec,15 Dec,whole,"10,000",185,,,,,18500000
+,3,1393,25,Rice,C,6 Dec,15 Dec,whole,"10,000",178,,,,,17800000
+,3,584,25,Rice,A,6 Dec,15 Dec,whole,"10,000",186,,,,,18600000
+,3,584,25,Rice,B,6 Dec,15 Dec,whole,"10,000",110,,,,,11000000
+,3,584,25,Rice,C,6 Dec,15 Dec,whole,"10,000",54,,,,,5400000
+,3,1393,100,Xenic,A,7 Dec,15 Dec,whole,"1,000",31,,,,,310000
+,3,1393,100,Xenic,B,7 Dec,15 Dec,whole,"1,000",34,,,,,340000
+,3,1393,100,Xenic,C,7 Dec,15 Dec,whole,"1,000",46,,,,,460000
+,3,584,75,Xenic,A,7 Dec,15 Dec,whole,"1,000",45,,,,,450000
+,3,584,75,Xenic,B,7 Dec,15 Dec,whole,"1,000",34,,,,,340000
+,3,584,75,Xenic,C,7 Dec,15 Dec,whole,"1,000",62,,,,,620000
+,3,584,50,Xenic,A,8 Dec,16 Dec,whole,"1,000",62,,,,,620000
+,3,584,50,Xenic,B,8 Dec,16 Dec,whole,"1,000",86,,,,,860000
+,3,584,50,Xenic,C,8 Dec,16 Dec,whole,"1,000",73,,,,,730000
+,3,1393,75,Xenic,A,8 Dec,16 Dec,whole,"1,000",53,,,,,530000
+,3,1393,75,Xenic,B,8 Dec,16 Dec,whole,"1,000",50,,,,,500000
+,3,1393,75,Xenic,C,8 Dec,16 Dec,whole,"1,000",57,,,,,570000
+,3,584,100,Xenic,A,8 Dec,16 Dec,whole,"1,000",66,,,,,660000
+,3,584,100,Xenic,B,8 Dec,16 Dec,whole,"1,000",67,,,,,670000
+,3,584,100,Xenic,C,8 Dec,16 Dec,whole,"1,000",141,,,,,1410000
+,3,584,150,Xenic,A,8 Dec,16 Dec,whole,"1,000",47,,,,,470000
+,3,584,150,Xenic,B,8 Dec,16 Dec,whole,"1,000",70,,,,,700000
+,3,584,150,Xenic,C,8 Dec,16 Dec,whole,"1,000",40,,,,,400000
+,3,1393,100,Xenic,A,9 Dec,16 Dec,whole,"1,000",65,,,,,650000
+,3,1393,100,Xenic,B,9 Dec,16 Dec,whole,"1,000",60,,,,,600000
+,3,1393,100,Xenic,C,9 Dec,16 Dec,whole,"1,000",63,,,,,630000
+,3,584,100,Xenic,A,9 Dec,16 Dec,whole,"1,000",33,,,,,330000
+,3,584,100,Xenic,B,9 Dec,16 Dec,whole,"1,000",49,,,,,490000
+,3,584,100,Xenic,C,9 Dec,16 Dec,whole,"1,000",51,,,,,510000
+,3,584,25,Xenic,A,9 Dec,16 Dec,whole,"1,000",91,,,,,910000
+,3,584,25,Xenic,B,9 Dec,16 Dec,whole,"1,000",189,,,,,1890000
+,3,584,25,Xenic,C,9 Dec,16 Dec,whole,"1,000",108,,,,,1080000
+,3,1393,50,Xenic,A,9 Dec,16 Dec,whole,"1,000",22,,,,,220000
+,3,1393,50,Xenic,B,9 Dec,16 Dec,whole,"1,000",65,,,,,650000
+,3,1393,50,Xenic,C,9 Dec,16 Dec,whole,"1,000",48,,,,,480000
+,3,1393,15,Xenic,A,10 Dec,16 Dec,whole,"1,000",69,,,,,690000
+,3,1393,15,Xenic,B,10 Dec,16 Dec,whole,"1,000",72,,,,,720000
+,3,1393,15,Xenic,C,10 Dec,16 Dec,whole,"1,000",96,,,,,960000
+,3,584,15,Xenic,A,10 Dec,16 Dec,whole,"1,000",171,,,,,1710000
+,3,584,15,Xenic,B,10 Dec,16 Dec,whole,"1,000",198,,,,,1980000
+,3,584,15,Xenic,C,10 Dec,16 Dec,whole,"1,000",182,,,,,1820000
+,3,1393,150,Xenic,A,10 Dec,16 Dec,whole,"1,000",36,,,,,360000
+,3,1393,150,Xenic,B,10 Dec,16 Dec,whole,"1,000",36,,,,,360000
+,3,1393,150,Xenic,C,10 Dec,16 Dec,whole,"1,000",40,,,,,400000
+,3,1393,25,Xenic,A,10 Dec,16 Dec,whole,"1,000",36,,,,,360000
+,3,1393,25,Xenic,B,10 Dec,16 Dec,whole,"1,000",27,,,,,270000
+,3,1393,25,Xenic,C,10 Dec,16 Dec,whole,"1,000",14,,,,,140000
+,4,1391,100,Rice,A,20 Jan 2022,27 Jan 2022,whole,"10,000",169,31 Jan 2022,whole,171,,17100000
+,4,1391,100,Rice,B,20 Jan 2022,27 Jan 2022,whole,"10,000",252,31 Jan 2022,whole,259,,25900000
+,4,1391,100,Rice,C,20 Jan 2022,27 Jan 2022,whole,"10,000",203,31 Jan 2022,whole,230,,23000000
+,4,2951,150,Rice,A,20 Jan 2022,27 Jan 2022,whole,"10,000",65,31 Jan 2022,whole,69,,6900000
+,4,2951,150,Rice,B,20 Jan 2022,27 Jan 2022,whole,"10,000",137,31 Jan 2022,whole,139,,13900000
+,4,2951,150,Rice,C,20 Jan 2022,27 Jan 2022,whole,"10,000",69,31 Jan 2022,whole,71,,7100000
+,4,1391,150,Rice,A,19 Jan 2022,27 Jan 2022,whole,"10,000",99,01 Feb 2022,whole,105,,10500000
+,4,1391,150,Rice,B,19 Jan 2022,27 Jan 2022,whole,"10,000",106,01 Feb 2022,whole,113,,11300000
+,4,1391,150,Rice,C,19 Jan 2022,27 Jan 2022,whole,"10,000",162,01 Feb 2022,whole,165,,16500000
+,4,2951,100,Rice,A,19 Jan 2022,27 Jan 2022,whole ,"10,000",44,01 Feb 2022,whole,56,,5600000
+,4,2951,100,Rice,B,19 Jan 2022,27 Jan 2022,whole,"10,000",133,01 Feb 2022,whole,142,,14200000
+,4,2951,100,Rice,C,19 Jan 2022,27 Jan 2022,whole,"10,000",184,01 Feb 2022,whole,187,,18700000
+,4,1391,50,Rice,A,20 Jan 2022,27 Jan 2022,whole,"10,000",110,01 Feb 2022,whole,115,,11500000
+,4,1391,50,Rice,B,20 Jan 2022,27 Jan 2022,whole,"10,000",213,01 Feb 2022,whole,215,,21500000
+,4,1391,50,Rice,C,20 Jan 2022,27 Jan 2022,whole,"10,000",101,01 Feb 2022,whole,103,,10300000
+,4,1391,75,Rice,A,20 Jan 2022,27 Jan 2022,whole,"10,000",197,01 Feb 2022,whole,197,,19700000
+,4,1391,75,Rice,B,20 Jan 2022,27 Jan 2022,whole,"10,000",74,01 Feb 2022,whole,76,,7600000
+,4,1391,75,Rice,C,20 Jan 2022,27 Jan 2022,whole,"10,000",141,01 Feb 2022,whole,148,,14800000
+,4,1391,25,Rice,A,21 Jan 2022,28 Jan 2022,whole,"10,000",118,31 Jan 2022,whole,119,,11900000
+,4,1391,25,Rice,B,21 Jan 2022,28 Jan 2022,whole,"10,000",150,31 Jan 2022,whole,150,,15000000
+,4,1391,25,Rice,C,21 Jan 2022,28 Jan 2022,whole,"10,000",131,31 Jan 2022,whole,132,,13200000
+,4,2951,25,Rice,A,21 Jan 2022,28 Jan 2022,whole,"10,000",388,31 Jan 2022,whole,394,,39400000
+,4,2951,25,Rice,B,21 Jan 2022,28 Jan 2022,whole,"10,000",64,31 Jan 2022,whole,66,,6600000
+,4,2951,25,Rice,C,21 Jan 2022,28 Jan 2022,whole,"10,000",14,31 Jan 2022,whole,14,,1400000
+,4,2951,15,Rice,A,21 Jan 2022,28 Jan 2022,whole,"10,000",127,31 Jan 2022,whole,135,,13500000
+,4,2951,15,Rice,B,21 Jan 2022,28 Jan 2022,whole,"10,000",223,31 Jan 2022,whole,232,,23200000
+,4,2951,15,Rice,C,21 Jan 2022,28 Jan 2022,whole,"10,000",78,31 Jan 2022,whole,91,,9100000
+,4,1391,15,Rice,A,21 Jan 2022,28 Jan 2022,whole,"10,000",606,31 Jan 2022,whole,619,,61900000
+,4,1391,15,Rice,B,21 Jan 2022,28 Jan 2022,whole,"10,000",193,31 Jan 2022,whole,228,,22800000
+,4,1391,15,Rice,C,21 Jan 2022,28 Jan 2022,whole,"10,000",624,31 Jan 2022,whole,630,,63000000
+,4,1391,25,Xenic,A,24 Jan 2022,31 Jan 2022,whole,"1,000",62,03 Feb 2022,whole,91,,910000
+,4,1391,25,Xenic,B,24 Jan 2022,31 Jan 2022,whole,"1,000",66,03 Feb 2022,whole,69,,690000
+,4,1391,25,Xenic,C,24 Jan 2022,31 Jan 2022,whole,"1,000",75,03 Feb 2022,whole,82,,820000
+,4,2951,25,Xenic,A,24 Jan 2022,31 Jan 2022,whole,"1,000",56,03 Feb 2022,whole,60,,600000
+,4,2951,25,Xenic,B,24 Jan 2022,31 Jan 2022,whole,"1,000",64,03 Feb 2022,whole,65,,650000
+,4,2951,25,Xenic,C,24 Jan 2022,31 Jan 2022,whole,"1,000",52,03 Feb 2022,whole,67,,670000
+,4,1391,150,Rice,A,24 Jan 2022,31 Jan 2022,whole,"10,000",262,03 Feb 2022,whole,268,,26800000
+,4,1391,150,Rice,B,24 Jan 2022,31 Jan 2022,whole,"10,000",217,03 Feb 2022,whole,224,,22400000
+,4,1391,150,Rice,C,24 Jan 2022,31 Jan 2022,whole,"10,000",410,03 Feb 2022,whole,416,,41600000
+,4,2951,150,Rice,A,24 Jan 2022,31 Jan 2022,whole,"10,000",39,03 Feb 2022,whole,39,,3900000
+,4,2951,150,Rice,B,24 Jan 2022,31 Jan 2022,whole,"10,000",52,03 Feb 2022,whole,57,,5700000
+,4,2951,150,Rice,C,24 Jan 2022,31 Jan 2022,whole,"10,000",84,03 Feb 2022,whole,92,,9200000
+,4,1391,100,Rice,A,24 Jan 2022,31 Jan 2022,whole,"10,000",59,03 Feb 2022,whole,62,,6200000
+,4,1391,100,Rice,B,24 Jan 2022,31 Jan 2022,whole,"10,000",68,03 Feb 2022,whole,69,,6900000
+,4,1391,100,Rice,C,24 Jan 2022,31 Jan 2022,whole,"10,000",204,03 Feb 2022,whole,208,,20800000
+,4,2951,100,Rice,A,24 Jan 2022,31 Jan 2022,whole,"10,000",152,03 Feb 2022,whole,157,,15700000
+,4,2951,100,Rice,B,24 Jan 2022,31 Jan 2022,whole,"10,000",150,03 Feb 2022,whole,151,,15100000
+,4,2951,100,Rice,C,24 Jan 2022,31 Jan 2022,whole,"10,000",135,03 Feb 2022,whole,141,,14100000
+,4,2951,50,Rice,A,26 Jan 2022,02 Feb 2022,whole,"10,000",55,09 Feb 2022,whole,57,,5700000
+,4,2951,50,Rice,B,26 Jan 2022,02 Feb 2022,whole,"10,000",46,09 Feb 2022,whole,48,,4800000
+,4,2951,50,Rice,C,26 Jan 2022,02 Feb 2022,whole,"10,000",39,09 Feb 2022,whole,39,,3900000
+,4,1391,50,Rice,A,26 Jan 2022,02 Feb 2022,whole,"10,000",170,09 Feb 2022,whole,173,,17300000
+,4,1391,50,Rice,B,26 Jan 2022,02 Feb 2022,whole,"10,000",94,09 Feb 2022,whole,99,,9900000
+,4,1391,50,Rice,C,26 Jan 2022,02 Feb 2022,whole,"10,000",143,09 Feb 2022,whole,143,,14300000
+,4,1391,100,Xenic,A,26 Jan 2022,02 Feb 2022,whole,"1,000",89,09 Feb 2022,whole,92,,920000
+,4,1391,100,Xenic,B,26 Jan 2022,02 Feb 2022,whole,"1,000",53,09 Feb 2022,whole,59,,590000
+,4,1391,100,Xenic,C,26 Jan 2022,02 Feb 2022,whole,"1,000",49,09 Feb 2022,whole,52,,520000
+,4,2951,100,Xenic,A,26 Jan 2022,02 Feb 2022,whole,"1,000",67,09 Feb 2022,whole,70,,700000
+,4,2951,100,Xenic,B,26 Jan 2022,02 Feb 2022,whole,"1,000",85,09 Feb 2022,whole,93,,930000
+,4,2951,100,Xenic,C,26 Jan 2022,02 Feb 2022,whole,"1,000",65,09 Feb 2022,whole,67,,670000
+,4,1391,50,Xenic,A,26 Jan 2022,02 Feb 2022,whole,"1,000",63,09 Feb 2022,whole,71,,710000
+,4,1391,50,Xenic,B,26 Jan 2022,02 Feb 2022,whole,"1,000",62,09 Feb 2022,whole,74,,740000
+,4,1391,50,Xenic,C,26 Jan 2022,02 Feb 2022,whole,"1,000",54,09 Feb 2022,whole,60,,600000
+,4,1391,75,Xenic,A,26 Jan 2022,02 Feb 2022,whole,"1,000",95,09 Feb 2022,whole,98,,980000
+,4,1391,75,Xenic,B,26 Jan 2022,02 Feb 2022,whole,"1,000",99,09 Feb 2022,whole,104,,1040000
+,4,1391,75,Xenic,C,26 Jan 2022,02 Feb 2022,whole,"1,000",96,09 Feb 2022,whole,104,,1040000
+,4,2951,15,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",61,09 Feb 2022,whole,62,,620000
+,4,2951,15,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",73,09 Feb 2022,whole,73,,730000
+,4,2951,15,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",91,09 Feb 2022,whole,104,,1040000
+,4,2951,50,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",41,09 Feb 2022,whole,67,,670000
+,4,2951,50,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",60,09 Feb 2022,whole,66,,660000
+,4,2951,50,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",93,09 Feb 2022,whole,109,,1090000
+,4,1391,15,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",70,09 Feb 2022,whole,76,,760000
+,4,1391,15,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",61,09 Feb 2022,whole,65,,650000
+,4,1391,15,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",69,09 Feb 2022,whole,72,,720000
+,4,1391,75,Rice,A,26 Jan 2022,03 Feb 2022,whole,"10,000",362,09 Feb 2022,whole,443,,44300000
+,4,1391,75,Rice,B,26 Jan 2022,03 Feb 2022,whole,"10,000",288,09 Feb 2022,whole,292,,29200000
+,4,1391,75,Rice,C,26 Jan 2022,03 Feb 2022,whole,"10,000",261,09 Feb 2022,whole,263,,26300000
+,4,2951,75,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",99,09 Feb 2022,whole,105,,1050000
+,4,2951,75,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",98,09 Feb 2022,whole,102,,1020000
+,4,2951,75,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",68,09 Feb 2022,whole,73,,730000
+,4,2951,75,Rice,A,26 Jan 2022,03 Feb 2022,whole,"10,000",56,09 Feb 2022,whole,58,,5800000
+,4,2951,75,Rice,B,26 Jan 2022,03 Feb 2022,whole,"10,000",59,09 Feb 2022,whole,61,,6100000
+,4,2951,75,Rice,C,26 Jan 2022,03 Feb 2022,whole,"10,000",47,09 Feb 2022,whole,53,,5300000
+,4,1391,150,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",74,09 Feb 2022,whole,76,,760000
+,4,1391,150,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",96,09 Feb 2022,whole,61,,610000
+,4,1391,150,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",164,09 Feb 2022,whole,53,,530000
+,4,2951,150,Xenic,A,26 Jan 2022,03 Feb 2022,whole,"1,000",66,09 Feb 2022,whole,73,,730000
+,4,2951,150,Xenic,B,26 Jan 2022,03 Feb 2022,whole,"1,000",92,09 Feb 2022,whole,102,,1020000
+,4,2951,150,Xenic,C,26 Jan 2022,03 Feb 2022,whole,"1,000",82,09 Feb 2022,whole,84,,840000
+,5,1392,150,Rice,A,31 Jan 2022,07 Feb 2022,whole,"10,000",135,11 Feb 2022,whole,156,,15600000
+,5,1392,150,Rice,B,31 Jan 2022,07 Feb 2022,whole,"10,000",771,11 Feb 2022,whole,771,,77100000
+,5,1392,150,Rice,C,31 Jan 2022,07 Feb 2022,whole,"10,000",105,11 Feb 2022,whole,105,,10500000
+,5,590,150,Rice,A,31 Jan 2022,07 Feb 2022,whole,"10,000",189,11 Feb 2022,whole,192,,19200000
+,5,590,150,Rice,B,31 Jan 2022,07 Feb 2022,whole,"10,000",235,11 Feb 2022,whole,244,,24400000
+,5,590,150,Rice,C,31 Jan 2022,07 Feb 2022,whole,"10,000",445,11 Feb 2022,whole,450,,45000000
+,5,1392,25,Rice,A,01 Feb 2022,07 Feb 2022,whole,"10,000",334,11 Feb 2022,whole,361,,36100000
+,5,1392,25,Rice,B,01 Feb 2022,07 Feb 2022,whole,"10,000",504,11 Feb 2022,whole,507,,50700000
+,5,1392,25,Rice,C,01 Feb 2022,07 Feb 2022,whole,"10,000",481,11 Feb 2022,whole,492,,49200000
+,5,590,50,Rice,A,01 Feb 2022,07 Feb 2022,whole,"10,000",248,11 Feb 2022,whole,248,,24800000
+,5,590,50,Rice,B,01 Feb 2022,07 Feb 2022,whole,"10,000",256,11 Feb 2022,whole,256,,25600000
+,5,590,50,Rice,C,01 Feb 2022,07 Feb 2022,whole,"10,000",725,11 Feb 2022,whole,727,,72700000
+,5,590,15,Rice,A,02 Feb 2022,09 Feb 2022,whole,"10,000",265,16 Feb 2022,whole,270,,27000000
+,5,590,15,Rice,B,02 Feb 2022,09 Feb 2022,whole,"10,000",197,16 Feb 2022,whole,200,,20000000
+,5,590,15,Rice,C,02 Feb 2022,09 Feb 2022,whole,"10,000",194,16 Feb 2022,whole,198,,19800000
+,5,1392,15,Rice,A,02 Feb 2022,09 Feb 2022,whole,"10,000",142,16 Feb 2022,whole,148,,14800000
+,5,1392,15,Rice,B,02 Feb 2022,09 Feb 2022,whole,"10,000",331,16 Feb 2022,whole,381,,38100000
+,5,1392,15,Rice,C,02 Feb 2022,09 Feb 2022,whole,"10,000",543,16 Feb 2022,whole,545,,54500000
+,5,1392,50,Rice,A,01 Feb 2022,09 Feb 2022,whole,"10,000",603,16 Feb 2022,whole,603,,60300000
+,5,1392,50,Rice,B,01 Feb 2022,09 Feb 2022,whole,"10,000",364,16 Feb 2022,whole,367,,36700000
+,5,1392,50,Rice,C,01 Feb 2022,09 Feb 2022,whole,"10,000",317,16 Feb 2022,whole,319,,31900000
+,5,590,25,Rice,A,02 Feb 2022,09 Feb 2022,whole,"10,000",254,16 Feb 2022,whole,258,,25800000
+,5,590,25,Rice,B,02 Feb 2022,09 Feb 2022,whole,"10,000",235,16 Feb 2022,whole,242,,24200000
+,5,590,25,Rice,C,02 Feb 2022,09 Feb 2022,whole,"10,000",195,16 Feb 2022,whole,203,,20300000
+,6,2616,0,Xenic,A,03 Feb 2022,09 Feb 2022,whole,"1,000",107,16 Feb 2022,whole,110,,1100000
+,6,2616,0,Xenic,B,03 Feb 2022,09 Feb 2022,whole,"1,000",50,16 Feb 2022,whole,79,,790000
+,6,2616,0,Xenic,C,03 Feb 2022,09 Feb 2022,whole,"1,000",44,16 Feb 2022,whole,79,,790000
+,5,1392,75,Rice,A,02 Feb 2022,09 Feb 2022,whole,"10,000",150,16 Feb 2022,whole,161,,16100000
+,5,1392,75,Rice,B,02 Feb 2022,09 Feb 2022,whole,"10,000",163,16 Feb 2022,whole,176,,17600000
+,5,1392,75,Rice,C,02 Feb 2022,09 Feb 2022,whole,"10,000",250,16 Feb 2022,whole,261,,26100000
+,6,2951,0,Rice,A,03 Feb 2022,09 Feb 2022,whole,"10,000",63,16 Feb 2022,whole,73,,7300000
+,6,2951,0,Rice,B,03 Feb 2022,09 Feb 2022,whole,"10,000",75,16 Feb 2022,whole,77,,7700000
+,6,2951,0,Rice,C,03 Feb 2022,09 Feb 2022,whole,"10,000",99,16 Feb 2022,whole,102,,10200000
+,5,590,75,Rice,A,02 Feb 2022,09 Feb 2022,whole,"10,000",113,16 Feb 2022,whole,119,,11900000
+,5,590,75,Rice,B,02 Feb 2022,09 Feb 2022,whole,"10,000",122,16 Feb 2022,whole,124,,12400000
+,5,590,75,Rice,C,02 Feb 2022,09 Feb 2022,whole,"10,000",205,16 Feb 2022,whole,211,,21100000
+,5,590,100,Rice,A,7 Feb 2022,17 Feb 2022,whole,"10,000",179,24 Feb 2022,whole,187,,18700000
+,5,590,100,Rice,B,7 Feb 2022,17 Feb 2022,whole,"10,000",490,24 Feb 2022,whole,495,,49500000
+,5,590,100,Rice,C,7 Feb 2022,17 Feb 2022,whole,"10,000",298,24 Feb 2022,whole,307,,30700000
+,5,1392,100,Rice,A,7 Feb 2022,17 Feb 2022,whole,"10,000",428,24 Feb 2022,whole,441,,44100000
+,5,1392,100,Rice,B,7 Feb 2022,17 Feb 2022,half,"10,000",506,24 Feb 2022,half,532,,53200000
+,5,1392,100,Rice,C,7 Feb 2022,17 Feb 2022,whole,"10,000",541,24 Feb 2022,whole,551,,55100000
+,5,590,150,Rice,A,7 Feb 2022,17 Feb 2022,whole,"10,000",148,24 Feb 2022,whole,175,,17500000
+,5,590,150,Rice,B,7 Feb 2022,17 Feb 2022,whole,"10,000",173,24 Feb 2022,whole,185,,18500000
+,5,590,150,Rice,C,7 Feb 2022,17 Feb 2022,whole,"10,000",128,24 Feb 2022,whole,151,,15100000
+,5,1392,150,Rice,A,7 Feb 2022,17 Feb 2022,whole,"10,000",229,24 Feb 2022,whole,245,,24500000
+,5,1392,150,Rice,B,7 Feb 2022,17 Feb 2022,whole,"10,000",339,24 Feb 2022,whole,348,,34800000
+,5,1392,150,Rice,C,7 Feb 2022,17 Feb 2022,whole,"10,000",241,24 Feb 2022,whole,250,,25000000
+,5,590,75,Xenic,A,8 Feb 2022,17 Feb 2022,whole,"1,000",164,24 Feb 2022,whole,166,,1660000
+,5,590,75,Xenic,B,8 Feb 2022,17 Feb 2022,whole,"1,000",137,24 Feb 2022,whole,152,,1520000
+,5,590,75,Xenic,C,8 Feb 2022,17 Feb 2022,whole,"1,000",159,24 Feb 2022,whole,162,,1620000
+,5,590,100,Xenic,A,8 Feb 2022,17 Feb 2022,whole,"1,000",99,24 Feb 2022,whole,107,,1070000
+,5,590,100,Xenic,B,8 Feb 2022,17 Feb 2022,whole,"1,000",97,24 Feb 2022,whole,105,,1050000
+,5,590,100,Xenic,C,8 Feb 2022,17 Feb 2022,whole,"1,000",127,24 Feb 2022,whole,128,,1280000
+,6,584,0,Rice,A,8 Feb 2022,17 Feb 2022,whole,"10,000",194,24 Feb 2022,whole,261,,26100000
+,6,584,0,Rice ,B,8 Feb 2022,17 Feb 2022,whole,"10,000",532,24 Feb 2022,whole,593,,59300000
+,6,584,0,Rice,C,8 Feb 2022,17 Feb 2022,whole,"10,000",351,24 Feb 2022,whole,409,,40900000
+,6,590,0,Rice,A,8 Feb 2022,17 Feb 2022,whole,"10,000",330,24 Feb 2022,whole,394,,39400000
+,6,590,0,Rice,B,8 Feb 2022,17 Feb 2022,whole,"10,000",577,24 Feb 2022,whole,590,,59000000
+,6,590,0,Rice,C,8 Feb 2022,17 Feb 2022,whole,"10,000",438,24 Feb 2022,whole,521,,52100000
+,5,590,150,Xenic,A,10 Feb 2022,17 Feb 2022,whole,"1,000",103,24 Feb 2022,whole,107,,1070000
+,5,590,150,Xenic,B,10 Feb 2022,17 Feb 2022,whole,"1,000",115,24 Feb 2022,whole,115,,1150000
+,5,590,150,Xenic,C,10 Feb 2022,17 Feb 2022,whole,"1,000",82,24 Feb 2022,whole,91,,910000
+,6,1148,0,Xenic,A,10 Feb 2022,17 Feb 2022,whole,"1,000",724,24 Feb 2022,whole,753,,7530000
+,6,1148,0,Xenic,B,10 Feb 2022,17 Feb 2022,whole,"1,000",687,24 Feb 2022,whole,712,,7120000
+,6,1148,0,Xenic,C,10 Feb 2022,17 Feb 2022,whole,"1,000",415,24 Feb 2022,whole,429,,4290000
+,5,590,50,Xenic,A,10 Feb 2022,17 Feb 2022,whole,"1,000",129,24 Feb 2022,whole,137,,1370000
+,5,590,50,Xenic,B,10 Feb 2022,17 Feb 2022,whole,"1,000",94,24 Feb 2022,whole,106,,1060000
+,5,590,50,Xenic,C,10 Feb 2022,17 Feb 2022,whole,"1,000",144,24 Feb 2022,whole,155,,1550000
+,5,1392,50,Xenic,A,10 Feb 2022,17 Feb 2022,whole,"1,000",237,24 Feb 2022,whole,262,,2620000
+,5,1392,50,Xenic,B,10 Feb 2022,17 Feb 2022,whole,"1,000",127,24 Feb 2022,whole,134,,1340000
+,5,1392,50,Xenic,C,10 Feb 2022,17 Feb 2022,whole,"1,000",81,24 Feb 2022,whole,97,,970000
+,5,590,25,Xenic,A,14 Feb 2022,24 Feb 2022,whole,"1,000",189,28 Feb 2022,whole,198,,
+,5,590,25,Xenic,B,14 Feb 2022,24 Feb 2022,whole,"1,000",131,28 Feb 2022,whole,138,,
+,5,590,25,Xenic,C,14 Feb 2022,24 Feb 2022,whole,"1,000",108,28 Feb 2022,whole,115,,
+,5,1392,25,Xenic,A,14 Feb 2022,24 Feb 2022,whole,"1,000",158,28 Feb 2022,whole,184,,
+,5,1392,25,Xenic,B,14 Feb 2022,24 Feb 2022,whole,"1,000",80,28 Feb 2022,whole,99,,
+,5,1392,25,Xenic,C,14 Feb 2022,24 Feb 2022,whole,"1,000",109,28 Feb 2022,whole,112,,
+,5,1392,150,Xenic,A,15 Feb 2022,24 Feb 2022,whole,"1,000",235,28 Feb 2022,whole,242,,
+,5,1392,150,Xenic,B,15 Feb 2022,24 Feb 2022,whole,"1,000",161,28 Feb 2022,whole,199,,
+,5,1392,150,Xenic,C,15 Feb 2022,24 Feb 2022,whole,"1,000",139,28 Feb 2022,whole,140,,
+,5,1392,75,Xenic,A,14 Feb 2022,24 Feb 2022,whole,"1,000",256,28 Feb 2022,whole,263,,
+,5,1392,75,Xenic,B,14 Feb 2022,24 Feb 2022,whole,"1,000",75,28 Feb 2022,whole,82,,
+,5,1392,75,Xenic,C,14 Feb 2022,24 Feb 2022,whole,"1,000",44,28 Feb 2022,whole,47,,
+,5,1392,100,Xenic,A,14 Feb 2022,24 Feb 2022,whole,"1,000",187,28 Feb 2022,whole,189,,
+,5,1392,100,Xenic,B,14 Feb 2022,24 Feb 2022,whole,"1,000",75,28 Feb 2022,whole,79,,
+,5,1392,100,Xenic,C,14 Feb 2022,24 Feb 2022,whole,"1,000",78,28 Feb 2022,whole,79,,
+,5,590,15,Xenic,A,16 Feb 2022,24 Feb 2022,whole,"1,000",176,28 Feb 2022,whole,181,,
+,5,590,15,Xenic,B,16 Feb 2022,24 Feb 2022,whole,"1,000",179,28 Feb 2022,whole,182,,
+,5,590,15,Xenic,C,16 Feb 2022,24 Feb 2022,whole,"1,000",183,28 Feb 2022,whole,189,,
+,5,1392,15,Xenic,A,16 Feb 2022,24 Feb 2022,whole,"1,000",118,28 Feb 2022,whole,124,,
+,5,1392,15,Xenic,B,16 Feb 2022,24 Feb 2022,whole,"1,000",120,28 Feb 2022,whole,134,,
+,5,1392,15,Xenic,C,16 Feb 2022,24 Feb 2022,whole,"1,000",165,28 Feb 2022,whole,167,,
